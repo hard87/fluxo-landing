@@ -5,6 +5,7 @@ async function configure(page, enabled = true) {
   await page.addInitScript(() => { window.events = []; window.umami = { track: (name, props) => window.events.push({name,props}) }; });
 }
 test.beforeEach(async ({page}) => {
+  await page.route('https://cloud.umami.is/script.js', route => route.fulfill({contentType:'text/javascript',body:''}));
   await page.route('https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit', route => route.fulfill({contentType:'text/javascript',body:`window.turnstile={render:(element,options)=>{window.challengeOptions=options;options.callback('test-token');return 'test-widget';},reset:()=>{window.challengeOptions.callback('fresh-test-token');}};`}));
 });
 async function fill(page, contact = 'teste@example.com') {

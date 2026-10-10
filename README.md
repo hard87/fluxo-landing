@@ -33,7 +33,7 @@ Sem endpoint, o formulário identifica claramente que apenas prepara um e-mail. 
 
 ## Medição
 
-A medição externa está desativada até haver uma instância Umami configurada. Para ativar, preencha analytics com scriptUrl e websiteId em site-config.js e atualize privacidade.html com o fornecedor, tratamento e retenção reais antes de publicar. Use uma configuração sem cookies de publicidade e respeite Do Not Track.
+A medição está ativa com Umami Cloud. A configuração pública está em analytics, no arquivo site-config.js. O site respeita Do Not Track e não envia conteúdo dos campos do formulário. Para desativar, defina analytics como null. Ao trocar de fornecedor, atualize também a política de privacidade.
 
 Eventos: cta_click, form_view, form_submit, form_error, lead_received, email_prepared e email_alternative. Somente lead_received representa a confirmação do receptor; não comprova entrega na caixa do Zoho. Nenhum evento recebe nome, contato ou mensagem. A propriedade interest distingue piloto de ficha-r1.
 
