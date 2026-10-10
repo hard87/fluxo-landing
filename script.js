@@ -93,6 +93,7 @@
     analytics.src = config.analytics.scriptUrl;
     analytics.defer = true;
     analytics.dataset.websiteId = config.analytics.websiteId;
+    if (config.analytics.domains) analytics.dataset.domains = config.analytics.domains;
     analytics.dataset.doNotTrack = 'true';
     analytics.addEventListener('load', () => {
       pendingEvents.splice(0).forEach(event => track(event.name, event.props));

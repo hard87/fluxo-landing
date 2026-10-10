@@ -4,6 +4,7 @@ window.FLUXO_CONFIG = {
   turnstileSiteKey: '0x4AAAAAAFTI0quwZ0DAwGpE', // Pública. A chave secreta fica apenas no Formspree.
   analytics: {
     scriptUrl: 'https://cloud.umami.is/script.js',
-    websiteId: '4d6c384b-8ebb-4c10-a4da-87c8f50fb3bf'
+    websiteId: '4d6c384b-8ebb-4c10-a4da-87c8f50fb3bf',
+    domains: 'fluxo.officina404.com.br'
   }
 };
