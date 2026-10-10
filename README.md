@@ -12,10 +12,14 @@ python -m http.server 4174
 
 Abra http://127.0.0.1:4174. Os arquivos do site estão na raiz.
 
-## Ativar o formulário
+## Formulário e entrega
 
-1. Crie uma conta e um formulário no Formspree para contato@officina404.com.br; verifique o endereço pelo Zoho Mail.
-2. Configure o domínio permitido como fluxo.officina404.com.br e a proteção contra spam oferecida pelo serviço. Confira a compatibilidade da configuração com envios AJAX.
+O formulário Piloto Fluxo está configurado em https://formspree.io/f/xppqrrej, com destinatário verificado contato@officina404.com.br no Zoho Mail. O filtro Formshield permanece ativo.
+
+Para manutenção ou substituição:
+
+1. Crie um formulário no Formspree para o destinatário desejado e verifique o endereço.
+2. Mantenha a proteção contra spam oferecida pelo serviço e confira a compatibilidade da configuração com envios AJAX. Se houver restrição por domínio disponível, limite-a a fluxo.officina404.com.br.
 3. Coloque a URL pública https://formspree.io/f/ID em formEndpoint, no arquivo site-config.js. Nunca coloque senhas, tokens de API ou credenciais do Zoho no site.
 4. Envie um pedido controlado depois da ativação e confirme tanto a entrada no painel do Formspree quanto a entrega no Zoho. Verifique limites do plano e a pasta de spam.
 
