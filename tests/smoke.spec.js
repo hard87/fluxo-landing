@@ -1,9 +1,12 @@
 const { test, expect } = require('@playwright/test');
 const endpoint = 'https://formspree.io/f/testfluxo';
 async function configure(page, enabled = true) {
-  await page.route('**/site-config.js', route => route.fulfill({ contentType: 'text/javascript', body: `window.FLUXO_CONFIG = { formEndpoint: '${enabled ? endpoint : ''}' };` }));
+  await page.route('**/site-config.js', route => route.fulfill({ contentType: 'text/javascript', body: `window.FLUXO_CONFIG = { formEndpoint: '${enabled ? endpoint : ''}', turnstileSiteKey: 'public-test-key' };` }));
   await page.addInitScript(() => { window.events = []; window.umami = { track: (name, props) => window.events.push({name,props}) }; });
 }
+test.beforeEach(async ({page}) => {
+  await page.route('https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit', route => route.fulfill({contentType:'text/javascript',body:`window.turnstile={render:(element,options)=>{window.challengeOptions=options;options.callback('test-token');return 'test-widget';},reset:()=>{window.challengeOptions.callback('fresh-test-token');}};`}));
+});
 async function fill(page, contact = 'teste@example.com') {
   await page.locator('[name=nome]').fill('Pessoa de teste');
   await page.locator('[name=contato]').fill(contact);
@@ -63,9 +66,35 @@ test('envio confirma receptor e mede conversão sem dados pessoais', async ({pag
   await expect(page.locator('[data-form-status]')).toContainText('Pedido recebido');
   await expect(page.locator('[name=nome]')).toHaveValue('');
   expect(body).toContain('teste@example.com');
+  expect(body).toContain('cf-turnstile-response');
+  expect(body).toContain('test-token');
   const events = await page.evaluate(() => window.events);
   expect(events.some(e=>e.name==='lead_received')).toBe(true);
   expect(JSON.stringify(events)).not.toMatch(/Pessoa de teste|teste@example.com|câmara fria/);
+});
+test('token ausente, expirado ou falho impede envio; nova tentativa usa novo token', async ({page}) => {
+  await configure(page); const bodies = [];
+  await page.route(endpoint, route => { bodies.push(route.request().postData()); return route.fulfill({status:bodies.length===1?422:200,json:{ok:bodies.length>1}}); });
+  await page.goto('/'); await fill(page);
+  await page.evaluate(()=>window.challengeOptions['expired-callback']());
+  await page.locator('[type=submit]').click();
+  await expect(page.locator('[data-form-status]')).toContainText('Conclua a verificação'); expect(bodies).toHaveLength(0);
+  await page.evaluate(()=>window.challengeOptions['error-callback']());
+  await page.locator('[type=submit]').click(); expect(bodies).toHaveLength(0);
+  await page.evaluate(()=>window.challengeOptions.callback('first-token'));
+  await page.locator('[type=submit]').click();
+  await expect(page.locator('[data-form-status]')).toContainText('Não conseguimos confirmar');
+  await page.locator('[type=submit]').click();
+  await expect(page.locator('[data-form-status]')).toContainText('Pedido recebido');
+  expect(bodies[0]).toContain('first-token'); expect(bodies[1]).toContain('fresh-test-token');
+});
+test('falha no carregamento da proteção mantém dados e oferece alternativa', async ({page}) => {
+  await configure(page); let count=0;
+  await page.route('https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit',route=>route.abort());
+  await page.route(endpoint,route=>{count++;return route.fulfill({json:{ok:true}});});
+  await page.goto('/'); await fill(page); await page.locator('[type=submit]').click();
+  await expect(page.locator('[data-verification-status]')).toContainText('Não foi possível carregar');
+  await expect(page.locator('[name=nome]')).toHaveValue('Pessoa de teste'); expect(count).toBe(0);
 });
 for (const failure of ['http','network','invalid-json','unconfirmed']) test(`falha ${failure} mantém pedido e oferece e-mail`, async ({page}) => {
   await configure(page);

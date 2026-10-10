@@ -110,6 +110,32 @@
   if (endpoint) form.action = endpoint;
   else submit.textContent = 'Preparar pedido por e-mail';
   const setStatus = message => { status.hidden = false; status.textContent = message; };
+  const verification = form.querySelector('[data-verification-status]');
+  const widget = form.querySelector('[data-turnstile]');
+  let verificationToken = '', widgetId;
+  const verificationStatus = message => { verification.hidden = false; verification.textContent = message; };
+  const clearVerification = message => { verificationToken = ''; verificationStatus(message); };
+  if (endpoint) {
+    verificationStatus('Aguarde a verificação de segurança antes de enviar.');
+    if (config.turnstileSiteKey) {
+      widget.hidden = false;
+      const challenge = document.createElement('script');
+      challenge.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+      challenge.async = true;
+      challenge.addEventListener('load', () => {
+        try {
+          widgetId = window.turnstile.render(widget, {
+            sitekey: config.turnstileSiteKey, size: 'flexible',
+            callback: token => { verificationToken = token; verificationStatus('Verificação concluída. Você pode enviar o pedido.'); },
+            'expired-callback': () => clearVerification('A verificação expirou. Aguarde uma nova verificação antes de enviar.'),
+            'error-callback': () => { clearVerification('A verificação falhou. Recarregue a página ou use o link de e-mail abaixo.'); return true; }
+          });
+        } catch { clearVerification('Não foi possível iniciar a verificação. Use o link de e-mail abaixo.'); }
+      });
+      challenge.addEventListener('error', () => clearVerification('Não foi possível carregar a verificação. Recarregue a página ou use o link de e-mail abaixo.'));
+      document.head.append(challenge);
+    } else verificationStatus('O formulário está indisponível. Use o link de e-mail abaixo.');
+  }
   const validContact = value => {
     const v = value.trim();
     if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return true;
@@ -160,6 +186,10 @@
       alternative.focus();
       return;
     }
+    if (!verificationToken) {
+      setStatus('Conclua a verificação de segurança antes de enviar. Se ela não carregar, use o link de e-mail abaixo.');
+      return;
+    }
     track('form_submit');
     submit.disabled = true;
     submit.textContent = 'Enviando…';
@@ -169,6 +199,7 @@
     const timeout = setTimeout(() => controller.abort(), 15000);
     try {
       const data = new FormData(form);
+      data.set('cf-turnstile-response', verificationToken);
       data.set('nome', form.elements.nome.value.trim());
       data.set('contato', contact.value.trim());
       if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact.value.trim())) data.set('email', contact.value.trim());
@@ -190,6 +221,11 @@
       submit.disabled = false;
       submit.textContent = 'Enviar pedido';
       form.removeAttribute('aria-busy');
+      clearVerification('Aguarde uma nova verificação para enviar outro pedido.');
+      if (widgetId !== undefined) {
+        try { window.turnstile.reset(widgetId); }
+        catch { verificationStatus('Recarregue a página para verificar novamente ou use o link de e-mail abaixo.'); }
+      }
     }
   });
   select(tabs[0]);

@@ -308,6 +308,8 @@
           <label>E-mail ou telefone<input type="text" name="contato" autocomplete="email" maxlength="160" placeholder="voce@empresa.com ou (11) 99999-9999" aria-describedby="contact-help" required /></label>
           <p class="form-note" id="contact-help">Informe um e-mail válido ou um telefone com DDD.</p>
           <label>O que você precisa? <span class="optional">(opcional)</span><textarea name="cenario" rows="3" maxlength="2000" placeholder="Conte o que quer monitorar ou peça a ficha técnica do R1."></textarea></label>
+          <div data-turnstile hidden></div>
+          <p class="form-note" role="status" aria-live="polite" data-verification-status hidden></p>
           <button class="button button-block" type="submit">Enviar pedido</button>
           <p class="form-note" role="status" aria-live="polite" data-form-status hidden></p>
           <p class="form-note" id="form-note">Usamos seus dados para responder ao pedido. Consulte a <a href="./privacidade.html">política de privacidade</a>.</p>

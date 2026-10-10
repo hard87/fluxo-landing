@@ -16,6 +16,12 @@ Abra http://127.0.0.1:4174. Os arquivos do site estão na raiz.
 
 O formulário Piloto Fluxo está configurado em https://formspree.io/f/xppqrrej, com destinatário verificado contato@officina404.com.br no Zoho Mail. O filtro Formshield permanece ativo.
 
+O Formspree exige Cloudflare Turnstile e valida o token no receptor. A chave pública está em turnstileSiteKey, em site-config.js; a chave secreta fica exclusivamente nas configurações de CAPTCHA do Formspree, com o provedor Turnstile. O widget autoriza fluxo.officina404.com.br, no modo Managed, sem pre-clearance. Nunca desative a validação para testar o site. Para testes locais reais, autorize localhost temporariamente e remova-o ao terminar; os testes de CI usam um provedor simulado, sem enviar pedidos reais.
+
+Validação controlada em 10/10/2026: ausência de token retornou HTTP 400; token inválido retornou HTTP 200 com ok: true, mas foi filtrado como Spam no painel. O envio com token real e contato sintético teste@example.com também foi filtrado. O contador da conta permaneceu em 1/50 após ambos. Portanto, sucesso na API não comprova passagem pelo filtro nem entrega no Zoho. A entrega após ativar Turnstile ainda precisa de um teste com contato real. A entrega anterior à ativação foi confirmada no Zoho.
+
+Sem token, com token expirado ou com falha de carregamento, o navegador oferece a alternativa por e-mail. Cada tentativa de envio reinicia a verificação, pois o token é de uso único. Essa proteção reduz abuso, mas não garante que toda mensagem seja um lead legítimo nem substitui os limites do serviço.
+
 Para manutenção ou substituição:
 
 1. Crie um formulário no Formspree para o destinatário desejado e verifique o endereço.
