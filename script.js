@@ -118,6 +118,10 @@
     return /^(?:55)?[1-9][0-9][2-9][0-9]{7,8}$/.test(digits);
   };
   const validateContact = () => {
+    if (contact.value.trim().toLowerCase() === 'contato@officina404.com.br') {
+      contact.setCustomValidity('Informe seu próprio e-mail ou telefone para que possamos responder.');
+      return;
+    }
     contact.setCustomValidity(contact.value && !validContact(contact.value) ? 'Informe um e-mail válido ou um telefone com DDD.' : '');
   };
   contact.addEventListener('input', validateContact);

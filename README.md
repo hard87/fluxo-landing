@@ -23,7 +23,7 @@ Para manutenção ou substituição:
 3. Coloque a URL pública https://formspree.io/f/ID em formEndpoint, no arquivo site-config.js. Nunca coloque senhas, tokens de API ou credenciais do Zoho no site.
 4. Envie um pedido controlado depois da ativação e confirme tanto a entrada no painel do Formspree quanto a entrega no Zoho. Verifique limites do plano e a pasta de spam.
 
-Sem endpoint, o formulário identifica claramente que apenas prepara um e-mail. Com endpoint, só confirma recebimento após uma resposta JSON com ok: true. Falhas preservam os dados e oferecem e-mail preenchido como alternativa. O teste automatizado intercepta requisições e não envia e-mails reais.
+Sem endpoint, o formulário identifica claramente que apenas prepara um e-mail. Com endpoint, só confirma recebimento após uma resposta JSON com ok: true. O campo de contato rejeita o próprio endereço destinatário, ignorando maiúsculas e espaços nas pontas. Essa regra opera no navegador; não substitui validação no receptor ou proteção contra chamadas diretas ao endpoint. Outros endereços do domínio continuam permitidos. Falhas preservam os dados e oferecem e-mail preenchido como alternativa. O teste automatizado intercepta requisições e não envia e-mails reais.
 
 ## Medição
 

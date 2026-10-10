@@ -44,7 +44,13 @@ test('validação de contato e campos obrigatórios bloqueia pedidos inválidos'
   await page.locator('[type=submit]').click(); expect(count).toBe(0);
   await fill(page,'abc'); await page.locator('[type=submit]').click();
   expect(await page.locator('[name=contato]').evaluate(e => e.validity.customError)).toBe(true); expect(count).toBe(0);
-  for (const value of ['teste@example.com','(11) 99999-9999','+55 (11) 99999-9999']) {
+  for (const value of ['contato@officina404.com.br', 'CONTATO@OFFICINA404.COM.BR', '  contato@officina404.com.br  ']) {
+    await page.locator('[name=contato]').fill(value);
+    await page.locator('[type=submit]').click();
+    expect(await page.locator('[name=contato]').evaluate(e => e.validationMessage)).toBe('Informe seu próprio e-mail ou telefone para que possamos responder.');
+    expect(count).toBe(0);
+  }
+  for (const value of ['teste@example.com', 'pessoa@officina404.com.br','(11) 99999-9999','+55 (11) 99999-9999']) {
     await page.locator('[name=contato]').fill(value);
     expect(await page.locator('form').evaluate(f => f.checkValidity())).toBe(true);
   }
