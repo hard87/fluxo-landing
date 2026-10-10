@@ -1,3 +1,5 @@
+@font-face { font-family: 'DM Sans'; src: url('./fonts/dm-sans.woff2') format('woff2'); font-weight: 100 1000; font-style: normal; font-display: swap; }
+@font-face { font-family: 'JetBrains Mono'; src: url('./fonts/jetbrains-mono.woff2') format('woff2'); font-weight: 100 800; font-style: normal; font-display: swap; }
 :root {
   --petrol-900: #062f2b;
   --petrol-800: #0a4741;
@@ -15,8 +17,8 @@
   --amber-soft: #fdf1e3;
   --radius: 14px;
   --shadow: 0 1px 2px rgb(6 47 43 / .06), 0 12px 32px -12px rgb(6 47 43 / .22);
-  --font-display: 'General Sans', 'Switzer', system-ui, sans-serif;
-  --font-body: 'Switzer', 'General Sans', system-ui, sans-serif;
+  --font-display: 'DM Sans', system-ui, sans-serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
   --text-sm: clamp(.82rem, .8rem + .1vw, .88rem);
   --text-base: clamp(.97rem, .94rem + .15vw, 1.06rem);
@@ -339,3 +341,17 @@ figcaption { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; fo
 }
 
 .field-photos figure:first-child img { object-position: 50% 8%; }
+
+.hero-availability { margin-top: 1rem; color: var(--petrol-800); font-size: var(--text-sm); max-width: 55ch; }
+.form-head p { margin-top: .7rem; color: var(--muted); font-size: var(--text-sm); }
+.optional { color: var(--muted); font-weight: 400; }
+.button:disabled { opacity: .7; cursor: wait; }
+.faq { max-width: 900px; }
+.faq details { border-top: 1px solid var(--line); padding: 1rem 0; }
+.faq summary { font-weight: 600; cursor: pointer; color: var(--petrol-800); }
+.faq details p { margin-top: .8rem; color: var(--muted); }
+.document { max-width: 800px; padding-block: 3rem; }
+.document h1 { font-size: var(--text-2xl); margin-bottom: 1.5rem; }
+.document h2 { font-size: 1.35rem; margin-top: 2rem; margin-bottom: .7rem; }
+.document p { margin-bottom: 1rem; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; } }

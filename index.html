@@ -1,10 +1,10 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fluxo — Saiba quando algo sai do limite | Officina404</title>
-  <meta name="description" content="Fluxo é a plataforma de monitoramento IoT da Officina404: reúne as medições dos seus sensores, guarda o histórico e abre alertas quando um limite é atingido. Comece por um piloto." />
+  <meta name="description" content="Monitore sensores e equipamentos com o Fluxo: medições, histórico e alertas no portal. Comece com um piloto de IoT para sua operação." />
   <meta name="theme-color" content="#073d35" />
   <link rel="canonical" href="https://fluxo.officina404.com.br/" />
   <meta name="robots" content="index, follow" />
@@ -19,12 +19,15 @@
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Fluxo — monitoramento IoT com histórico e alertas" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a4741'/%3E%3Cpath d='M8 32h11l8-20 13 40 8-20h8' fill='none' stroke='%2363d6b0' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
-  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
-  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&f[]=switzer@400,500,600&display=swap" rel="stylesheet" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <meta name="twitter:title" content="Fluxo — saiba quando algo sai do limite" />
+  <meta name="twitter:description" content="Monitoramento IoT com histórico e alertas no portal. Comece por um piloto." />
+  <meta name="twitter:image" content="https://fluxo.officina404.com.br/og-image.jpg" />
+  <meta name="twitter:image:alt" content="Fluxo — monitoramento IoT com histórico e alertas" />
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="./favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
   <link rel="stylesheet" href="./styles.css" />
+  <script defer src="./site-config.js"></script>
   <script defer src="./script.js"></script>
 </head>
 <body>
@@ -61,13 +64,14 @@
             <a class="button" href="#piloto">Conversar sobre um piloto <span aria-hidden="true">→</span></a>
             <a class="button button-ghost" href="#problemas">Ver o que resolve</a>
           </div>
+          <p class="hero-availability">Alertas e notificações disponíveis no portal. E-mail, WhatsApp e Telegram ainda não estão disponíveis como canais de alerta.</p>
           <p class="microcopy">Começamos por um piloto pequeno: um ponto de medição e uma pergunta real. Você tem sensores? Integramos. Não tem? Definimos a coleta com você.</p>
         </div>
 
         <figure class="hero-visual">
           <div class="browser">
             <div class="browser-bar"><span></span><span></span><span></span><em>Fluxo · Portal IoT</em></div>
-            <img src="./img/tela-dashboard.webp" width="1600" height="708" alt="Tela de Dashboard do Fluxo com indicadores de dispositivos online, offline, mensagens processadas e última telemetria" />
+            <img src="./img/tela-dashboard.webp" width="1600" height="708" fetchpriority="high" alt="Tela de Dashboard do Fluxo com indicadores de dispositivos online, offline, mensagens processadas e última telemetria" />
           </div>
           <div class="hero-chart">
             <img src="./img/tela-historico-grafico.webp" width="1400" height="582" alt="Gráfico de temperatura de duas câmaras frias ao longo de seis horas" />
@@ -101,7 +105,7 @@
         <div class="pain-grid">
           <article class="pain">
             <p class="pain-q">“Só descubro que algo saiu do normal depois que o estrago está feito.”</p>
-            <h3>Você define o limite. O Fluxo avisa.</h3>
+            <h3>Você define o limite. O alerta aparece no portal.</h3>
             <p>Cada regra tem métrica, condição e severidade. Quando o limite é ultrapassado, o portal abre um evento de alerta, e sua equipe registra o reconhecimento.</p>
             <span class="pain-ev">Tela: Regras de alerta e eventos</span>
           </article>
@@ -267,7 +271,7 @@
           <p class="eyebrow">Coleta em campo <span class="flag flag-proto">Em desenvolvimento</span></p>
           <h2>Se você ainda não tem sensores, a gente ajuda a definir.</h2>
           <p>Avaliamos os sensores que você já usa ou definimos a coleta para o piloto. O R1 é o nó de campo da Officina404, com foco inicial em temperatura. Hoje ele existe como protótipo de bancada. Gabinete, alimentação e certificações ainda serão definidos.</p>
-          <a class="button button-ghost" href="#piloto">Pedir a ficha técnica do R1</a>
+          <a class="button button-ghost" href="#piloto" data-interest="ficha-r1">Pedir a ficha técnica do R1</a>
         </div>
         <div class="field-photos">
           <figure>
@@ -297,36 +301,29 @@
           </ol>
         </div>
 
-        <form class="pilot-form" aria-describedby="form-note">
-          <div class="form-head">
-            <h3>Conversar sobre um piloto</h3>
-            
-          </div>
-          <label>Nome<input type="text" name="nome" autocomplete="name" placeholder="Seu nome" required /></label>
-          <label>Empresa<input type="text" name="empresa" autocomplete="organization" placeholder="Nome da empresa" /></label>
-          <label>E-mail ou telefone<input type="text" name="contato" placeholder="Como prefere ser contatado" required /></label>
-          <fieldset>
-            <legend>O que você quer monitorar?</legend>
-            <div class="chips">
-              <label><input type="checkbox" name="alvo" value="camara" /> Câmara fria</label>
-              <label><input type="checkbox" name="alvo" value="ambiente" /> Ambiente controlado</label>
-              <label><input type="checkbox" name="alvo" value="equipamento" /> Equipamento</label>
-              <label><input type="checkbox" name="alvo" value="outro" /> Outro</label>
-            </div>
-          </fieldset>
-          <fieldset>
-            <legend>Você já tem sensores instalados?</legend>
-            <div class="chips">
-              <label><input type="radio" name="sensores" value="sim" /> Sim</label>
-              <label><input type="radio" name="sensores" value="nao" /> Não</label>
-              <label><input type="radio" name="sensores" value="naosei" /> Não sei</label>
-            </div>
-          </fieldset>
-          <label>O que acontece hoje quando algo sai do limite?<textarea name="cenario" rows="3" placeholder="Ex.: quantos pontos, onde ficam, quem é avisado e como"></textarea></label>
-          <button class="button button-block" type="submit">Enviar pedido por e-mail</button>
-          <p class="form-note" role="status" data-form-status hidden></p>
-          <p class="form-note" id="form-note">Ao enviar, abrimos o seu aplicativo de e-mail com a mensagem preenchida. Se preferir, escreva direto para <a href="mailto:contato@officina404.com.br">contato@officina404.com.br</a>. Os dados do formulário seguem no e-mail que você enviar e são usados para responder ao seu contato.</p>
+        <form class="pilot-form" aria-describedby="form-note" method="post">
+          <div class="form-head"><h3 data-form-title>Conversar sobre um piloto</h3><p>Conte o essencial. Os detalhes do piloto ficam para a conversa.</p></div>
+          <input type="hidden" name="interesse" value="piloto" />
+          <label>Nome<input type="text" name="nome" autocomplete="name" maxlength="120" placeholder="Seu nome" required /></label>
+          <label>E-mail ou telefone<input type="text" name="contato" autocomplete="email" maxlength="160" placeholder="voce@empresa.com ou (11) 99999-9999" aria-describedby="contact-help" required /></label>
+          <p class="form-note" id="contact-help">Informe um e-mail válido ou um telefone com DDD.</p>
+          <label>O que você precisa? <span class="optional">(opcional)</span><textarea name="cenario" rows="3" maxlength="2000" placeholder="Conte o que quer monitorar ou peça a ficha técnica do R1."></textarea></label>
+          <button class="button button-block" type="submit">Enviar pedido</button>
+          <p class="form-note" role="status" aria-live="polite" data-form-status hidden></p>
+          <p class="form-note" id="form-note">Usamos seus dados para responder ao pedido. Consulte a <a href="./privacidade.html">política de privacidade</a>.</p>
+          <p class="form-note">Prefere e-mail? <a data-email-alternative href="mailto:contato@officina404.com.br">Escreva para contato@officina404.com.br</a>.</p>
+          <noscript><p class="form-note">Para usar o formulário, habilite JavaScript. Você também pode escrever para <a href="mailto:contato@officina404.com.br">contato@officina404.com.br</a>.</p></noscript>
         </form>
+      </div>
+    </section>
+    <section class="section" id="duvidas">
+      <div class="shell faq"><div class="section-head"><p class="eyebrow">Dúvidas frequentes</p><h2>Antes de começar o piloto.</h2></div>
+        <details><summary>Preciso comprar sensores novos?</summary><p>Não necessariamente. Avaliamos os dispositivos e dados que você já tem. Se precisar de coleta em campo, definimos sensores e conectividade no escopo do piloto.</p></details>
+        <details><summary>Onde recebo os alertas?</summary><p>Hoje, os alertas e as notificações ficam no portal do Fluxo. E-mail está pendente; WhatsApp e Telegram ainda não estão disponíveis.</p></details>
+        <details><summary>Funciona sem internet?</summary><p>O envio de leituras depende de conectividade. Avaliamos a conexão de cada instalação durante a definição do piloto.</p></details>
+        <details><summary>Quanto custa e quanto tempo leva?</summary><p>O investimento e o prazo dependem do ponto de medição, dos sensores e da integração necessária. Escopo, investimento e responsabilidades são definidos na proposta do piloto.</p></details>
+        <details><summary>O R1 já está pronto para instalação?</summary><p>O R1 é um protótipo de bancada com foco inicial em temperatura. Gabinete, alimentação e certificações ainda serão definidos. A implantação do piloto considera a solução adequada ao seu cenário.</p></details>
+        <details><summary>As telas mostram resultados de clientes?</summary><p>As capturas são da interface real do Fluxo, com dados demonstrativos. A foto do R1 mostra o protótipo de bancada; o gabinete é uma ilustração conceitual. Veja o <a href="https://officina404.com.br/projetos/fluxo.html">diário técnico</a> para acompanhar o desenvolvimento.</p></details>
       </div>
     </section>
   </main>
@@ -341,6 +338,7 @@
         <p>Monitoramento IoT com histórico e alertas, desenvolvido pela Officina404.</p>
       </div>
       <nav class="footer-links" aria-label="Rodapé">
+        <a href="./privacidade.html">Privacidade</a>
         <a href="https://officina404.com.br">Officina404</a>
         <a href="https://officina404.com.br/projetos/fluxo.html">Diário técnico</a>
         <a href="mailto:contato@officina404.com.br">contato@officina404.com.br</a>
