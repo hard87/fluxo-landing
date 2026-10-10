@@ -1,39 +1,58 @@
-﻿# Landing comercial do Fluxo
+# Landing comercial do Fluxo
 
-Site estático independente criado para publicação em `fluxo.officina404.com.br`.
+Site estático publicado em https://fluxo.officina404.com.br/, sem etapa de build.
 
 ## Visualizar localmente
 
 Na raiz do repositório:
 
 ```powershell
-python -m http.server 4174 --directory marketing-site
+python -m http.server 4174
 ```
 
-Abra `http://127.0.0.1:4174`.
+Abra http://127.0.0.1:4174. Os arquivos do site estão na raiz.
+
+## Formulário e entrega
+
+O formulário Piloto Fluxo está configurado em https://formspree.io/f/xppqrrej, com destinatário verificado contato@officina404.com.br no Zoho Mail. O filtro Formshield permanece ativo.
+
+O Formspree exige Cloudflare Turnstile e valida o token no receptor. A chave pública está em turnstileSiteKey, em site-config.js; a chave secreta fica exclusivamente nas configurações de CAPTCHA do Formspree, com o provedor Turnstile. O widget autoriza fluxo.officina404.com.br, no modo Managed, sem pre-clearance. Nunca desative a validação para testar o site. Para testes locais reais, autorize localhost temporariamente e remova-o ao terminar; os testes de CI usam um provedor simulado, sem enviar pedidos reais.
+
+Validação controlada em 10/10/2026: ausência de token retornou HTTP 400; token inválido retornou HTTP 200 com ok: true, mas foi filtrado como Spam no painel. O envio com token real e contato sintético teste@example.com também foi filtrado. O contador da conta permaneceu em 1/50 após ambos. Portanto, sucesso na API não comprova passagem pelo filtro nem entrega no Zoho. A entrega após ativar Turnstile ainda precisa de um teste com contato real. A entrega anterior à ativação foi confirmada no Zoho.
+
+Sem token, com token expirado ou com falha de carregamento, o navegador oferece a alternativa por e-mail. Cada tentativa de envio reinicia a verificação, pois o token é de uso único. Essa proteção reduz abuso, mas não garante que toda mensagem seja um lead legítimo nem substitui os limites do serviço.
+
+Para manutenção ou substituição:
+
+1. Crie um formulário no Formspree para o destinatário desejado e verifique o endereço.
+2. Mantenha a proteção contra spam oferecida pelo serviço e confira a compatibilidade da configuração com envios AJAX. Se houver restrição por domínio disponível, limite-a a fluxo.officina404.com.br.
+3. Coloque a URL pública https://formspree.io/f/ID em formEndpoint, no arquivo site-config.js. Nunca coloque senhas, tokens de API ou credenciais do Zoho no site.
+4. Envie um pedido controlado depois da ativação e confirme tanto a entrada no painel do Formspree quanto a entrega no Zoho. Verifique limites do plano e a pasta de spam.
+
+Sem endpoint, o formulário identifica claramente que apenas prepara um e-mail. Com endpoint, só confirma recebimento após uma resposta JSON com ok: true. O campo de contato rejeita o próprio endereço destinatário, ignorando maiúsculas e espaços nas pontas. Essa regra opera no navegador; não substitui validação no receptor ou proteção contra chamadas diretas ao endpoint. Outros endereços do domínio continuam permitidos. Falhas preservam os dados e oferecem e-mail preenchido como alternativa. O teste automatizado intercepta requisições e não envia e-mails reais.
+
+## Medição
+
+A medição externa está desativada até haver uma instância Umami configurada. Para ativar, preencha analytics com scriptUrl e websiteId em site-config.js e atualize privacidade.html com o fornecedor, tratamento e retenção reais antes de publicar. Use uma configuração sem cookies de publicidade e respeite Do Not Track.
+
+Eventos: cta_click, form_view, form_submit, form_error, lead_received, email_prepared e email_alternative. Somente lead_received representa a confirmação do receptor; não comprova entrega na caixa do Zoho. Nenhum evento recebe nome, contato ou mensagem. A propriedade interest distingue piloto de ficha-r1.
+
+## Testes e CI
+
+```sh
+npm ci
+npx playwright install chromium
+npm test
+```
+
+O smoke test cobre navegação responsiva, abas por teclado, validação de contato, envio confirmado, erros, preservação dos dados, alternativa por e-mail e interesse na ficha do R1. GitHub Actions executa os testes a cada push e pull request.
 
 ## Publicação
 
-Os arquivos desta pasta podem ser publicados diretamente na raiz do subdomínio, sem etapa de build:
+Publique os arquivos estáticos da raiz, incluindo fonts/, img/, site-config.js, ícones, privacidade.html e 404.html. Não publique node_modules/ ou resultados de teste. Atualize lastmod no sitemap apenas quando o conteúdo mudar significativamente.
 
-- `index.html`, `styles.css` e `script.js`;
-- `img/` (capturas do portal com dados demonstrativos e imagens do R1);
-- `og-image.jpg`, `robots.txt` e `sitemap.xml`.
+## Conteúdo e direitos
 
-Antes da publicação definitiva, confirme:
+A landing mostra a interface real com dados demonstrativos e o R1 como protótipo e conceito de gabinete. Não inventa resultados de clientes nem preços. O diário técnico em https://officina404.com.br/projetos/fluxo.html preserva evidências do desenvolvimento.
 
-1. o apontamento DNS e HTTPS de `fluxo.officina404.com.br`;
-2. o formulário de piloto monta um e-mail para `contato@officina404.com.br` (`mailto`); se for trocado por agenda ou backend de leads, ajustar `script.js`;
-3. a URL pública do portal, caso seja incluído um botão separado de acesso;
-4. a imagem Open Graph, quando houver um arquivo de marca definitivo.
-
-## Responsabilidade das páginas
-
-- esta landing apresenta valor, aplicações, oferta modular e conversão;
-- `officina404.com.br/projetos/fluxo.html` preserva história, evidências e diário técnico;
-- o portal continua responsável por autenticação e operação do produto.
-
-A landing não exibe métricas de clientes. As telas são do portal real com dados demonstrativos, e o R1 aparece identificado como protótipo de bancada e conceito de gabinete.
-
-O histórico das versões anteriores fica fora do GitHub, em `D:\Officina404\_arquivo\fluxo\landing-page`.
-
+DM Sans e JetBrains Mono são hospedadas localmente com suas licenças OFL em fonts/. O restante do projeto preserva todos os direitos reservados, conforme LICENSE.
