@@ -1,355 +1,644 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fluxo — Saiba quando algo sai do limite | Officina404</title>
-  <meta name="description" content="Monitore sensores e equipamentos com o Fluxo: medições, histórico e alertas no portal. Comece com um piloto de IoT para sua operação." />
-  <meta name="theme-color" content="#073d35" />
+  <title>Fluxo | Temperatura e umidade com alertas · Lages/SC</title>
+  <meta name="description" content="Monitoramento de temperatura e umidade com histórico e alertas no portal, Telegram e e-mail. Diagnóstico de 30 dias sem custo em Lages e região." />
+  <meta name="theme-color" content="#0c2542" />
   <link rel="canonical" href="https://fluxo.officina404.com.br/" />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Fluxo — saiba quando algo sai do limite" />
-  <meta property="og:description" content="Monitoramento IoT com histórico e alertas. Comece por um piloto com um ponto de medição." />
+  <meta property="og:title" content="Fluxo | Temperatura e umidade com alertas · Lages/SC" />
+  <meta property="og:description" content="Monitoramento de temperatura e umidade com histórico e alertas no portal, Telegram e e-mail. Diagnóstico de 30 dias sem custo em Lages e região." />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="pt_BR" />
-  <meta property="og:site_name" content="Fluxo — Officina404" />
+  <meta property="og:site_name" content="Fluxo — Officina 404" />
   <meta property="og:url" content="https://fluxo.officina404.com.br/" />
   <meta property="og:image" content="https://fluxo.officina404.com.br/og-image.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Fluxo — monitoramento IoT com histórico e alertas" />
+  <meta property="og:image:alt" content="Card do Fluxo em fundo verde-escuro com o texto “Visibilidade para agir. Entenda sua operação em tempo real.” e um diagrama de equipamentos conectados a um servidor central, com um sinal de alerta em vermelho." />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Fluxo — saiba quando algo sai do limite" />
-  <meta name="twitter:description" content="Monitoramento IoT com histórico e alertas no portal. Comece por um piloto." />
+  <meta name="twitter:title" content="Fluxo | Temperatura e umidade com alertas · Lages/SC" />
+  <meta name="twitter:description" content="Monitoramento de temperatura e umidade com histórico e alertas no portal, Telegram e e-mail. Diagnóstico de 30 dias sem custo em Lages e região." />
   <meta name="twitter:image" content="https://fluxo.officina404.com.br/og-image.jpg" />
-  <meta name="twitter:image:alt" content="Fluxo — monitoramento IoT com histórico e alertas" />
-  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
-  <link rel="icon" href="./favicon.png" type="image/png" />
-  <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
-  <link rel="stylesheet" href="./styles.css" />
-  <script defer src="./site-config.js"></script>
-  <script defer src="./script.js"></script>
+  <meta name="twitter:image:alt" content="Card do Fluxo em fundo verde-escuro com o texto “Visibilidade para agir. Entenda sua operação em tempo real.” e um diagrama de equipamentos conectados a um servidor central, com um sinal de alerta em vermelho." />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="preload" as="image" href="assets/hero-ambiente-farma.webp" type="image/webp" />
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/ibm-plex-sans-latin-600-normal.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/ibm-plex-mono-latin-500-normal.woff2" crossorigin />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <a class="skip-link" href="#inicio">Pular para o conteúdo</a>
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
 
-  <header class="site-header" data-header>
+  <header class="site-header">
     <div class="shell header-inner">
-      <a class="brand" href="#inicio" aria-label="Fluxo, início">
-        <svg viewBox="0 0 32 32" aria-hidden="true" fill="none"><rect width="32" height="32" rx="8" fill="currentColor"/><path d="M5 16h5l4-10 6 20 4-10h3" stroke="#63d6b0" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="brand-name">Fluxo</span>
-        <span class="brand-by">por Officina404</span>
+      <a class="brand" href="#inicio">
+        <img src="assets/icon-fluxo-sm.webp" width="40" height="40" alt="" />
+        <span><span class="brand-name">Fluxo<b>.</b></span><span class="brand-by">por Officina 404 · Lages/SC</span></span>
       </a>
-      <nav class="navigation" id="navigation" aria-label="Navegação principal">
-        <a href="#problemas">O que resolve</a>
-        <a href="#plataforma">Na tela</a>
-        <a href="#como-funciona">Como funciona</a>
-        <a href="#contratacao">Contratação</a>
-        <a href="#piloto">Piloto</a>
+      <nav class="nav" id="nav" aria-label="Principal">
+        <a href="#o-que-muda">O que muda</a>
+        <a href="#sabado">O alerta</a>
+        <a href="#na-tela">Na tela</a>
+        <a href="#equipamentos">Equipamentos</a>
+                <a href="#diagnostico">Diagnóstico</a>
+        <a href="#faq">Dúvidas</a>
       </nav>
-      <a class="button button-small" href="#piloto">Conversar sobre um piloto</a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation">Menu</button>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm" href="#contato" data-cta="header">Quero o diagnóstico</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Abrir menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
     </div>
   </header>
 
-  <main id="inicio">
-    <!-- HERO -->
-    <section class="hero">
+  <main id="conteudo">
+
+    <!-- 1. HERO: a dor de 43 horas -->
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
       <div class="shell hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">Monitoramento IoT para operações</p>
-          <h1>Saiba quando algo sai do limite e entenda o que aconteceu.</h1>
-          <p class="lead">O Fluxo reúne as medições dos seus sensores e equipamentos em um painel, guarda o histórico e abre um alerta quando uma condição definida pela sua equipe é atingida.</p>
-          <div class="actions">
-            <a class="button" href="#piloto">Conversar sobre um piloto <span aria-hidden="true">→</span></a>
-            <a class="button button-ghost" href="#problemas">Ver o que resolve</a>
+          <p class="hero-kicker"><span class="mono">SÁB 13:00 → SEG 08:00</span> Quem está olhando a geladeira, a sala e o estoque?</p>
+          <h1 id="hero-title">Proteja medicamentos e ambientes críticos de <em>desvios térmicos</em> e tenha o registro para comprovar.</h1>
+          <p class="hero-lead">Leitura a cada 30 segundos. Alerta no Telegram, no e-mail e no portal quando a temperatura ou a umidade sai do limite. Histórico por período para mostrar na fiscalização ou na auditoria.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#contato" data-cta="hero-diagnostico">Quero o diagnóstico de 30 dias
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            <a class="btn btn-ghost" href="#sabado" data-cta="hero-alerta">Ver o alerta chegando</a>
           </div>
-          <p class="hero-availability">Alertas e notificações disponíveis no portal. E-mail, WhatsApp e Telegram ainda não estão disponíveis como canais de alerta.</p>
-          <p class="microcopy">Começamos por um piloto pequeno: um ponto de medição e uma pergunta real. Você tem sensores? Integramos. Não tem? Definimos a coleta com você.</p>
+          <p class="hero-note"><span class="led led-ok" aria-hidden="true"></span><span><span data-slots-text>Agende seu diagnóstico em Lages e região</span>. Instalação presencial, sem custo nos 30 dias.</span></p>
         </div>
 
-        <figure class="hero-visual">
-          <div class="browser">
-            <div class="browser-bar"><span></span><span></span><span></span><em>Fluxo · Portal IoT</em></div>
-            <img src="./img/tela-dashboard.webp" width="1600" height="708" fetchpriority="high" alt="Tela de Dashboard do Fluxo com indicadores de dispositivos online, offline, mensagens processadas e última telemetria" />
+        <figure class="instrument" aria-labelledby="inst-cap">
+          <div class="inst-head">
+            <div>
+              <span class="inst-label">Geladeira de termolábeis</span>
+              <span class="inst-sub">fim de semana · faixa 2–8 °C</span>
+            </div>
+            <span class="status status-warn"><span class="led led-warn" aria-hidden="true"></span>ALERTA ABERTO</span>
           </div>
-          <div class="hero-chart">
-            <img src="./img/tela-historico-grafico.webp" width="1400" height="582" alt="Gráfico de temperatura de duas câmaras frias ao longo de seis horas" />
+          <div class="inst-readout">
+            <div class="readout-main"><span class="readout-val">8,9</span><span class="readout-unit">°C</span></div>
+            <dl class="readout-meta">
+              <div><dt>Sáb</dt><dd>23:47</dd></div>
+              <div><dt>Limite</dt><dd>8,0 °C</dd></div>
+              <div><dt>Tolerância</dt><dd>5 min</dd></div>
+            </dl>
           </div>
-          <div class="hero-alert" aria-hidden="true">
-            <span class="sev">Aviso</span>
-            <div><strong>Temperatura acima do limite</strong><small>camara-01 · condição &gt; 8 °C</small></div>
-          </div>
-          <figcaption><span class="flag flag-demo">Dados demonstrativos</span> Interface real do Fluxo. Os valores não são de clientes.</figcaption>
+          <svg class="curve" viewBox="0 0 600 220" role="img" aria-label="Curva demonstrativa de temperatura do sábado 13h à segunda 8h, com um desvio acima de 8 °C perto da meia-noite de sábado">
+            <defs>
+              <linearGradient id="g-curve" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#14c8c0" stop-opacity=".22"/><stop offset="1" stop-color="#14c8c0" stop-opacity="0"/></linearGradient>
+            </defs>
+            <rect class="band" x="0" y="66.7" width="600" height="100" />
+            <line class="band-edge" x1="0" x2="600" y1="66.7" y2="66.7" />
+            <line class="band-edge" x1="0" x2="600" y1="166.7" y2="166.7" />
+            <text class="axis-t" x="596" y="62" text-anchor="end">8 °C</text>
+            <text class="axis-t" x="596" y="182" text-anchor="end">2 °C</text>
+            <line class="tick" x1="153.5" x2="153.5" y1="0" y2="200" /><text class="axis-t" x="157" y="214">dom 00h</text>
+            <line class="tick" x1="488.4" x2="488.4" y1="0" y2="200" /><text class="axis-t" x="492" y="214">seg 00h</text>
+            <text class="axis-t" x="2" y="214">sáb 13h</text>
+            <path class="trace" pathLength="1000" d="M0.0,118.2 L1.2,116.4 L2.3,113.0 L3.5,112.9 L4.7,110.8 L5.8,111.1 L7.0,112.5 L8.1,112.7 L9.3,115.9 L10.5,117.2 L11.6,120.7 L12.8,123.1 L14.0,124.3 L15.1,124.7 L16.3,127.3 L17.4,127.1 L18.6,125.2 L19.8,122.9 L20.9,121.9 L22.1,120.0 L23.3,116.1 L24.4,116.5 L25.6,112.6 L26.7,113.0 L27.9,113.1 L29.1,113.6 L30.2,114.3 L31.4,114.8 L32.6,118.8 L33.7,120.2 L34.9,122.5 L36.0,125.3 L37.2,126.4 L38.4,128.7 L39.5,128.8 L40.7,127.7 L41.9,125.1 L43.0,123.8 L44.2,121.8 L45.3,118.7 L46.5,116.8 L47.7,115.4 L48.8,112.8 L50.0,112.5 L51.2,114.0 L52.3,114.2 L53.5,116.0 L54.7,117.3 L55.8,120.1 L57.0,123.7 L58.1,124.0 L59.3,128.0 L60.5,128.2 L61.6,127.6 L62.8,128.7 L64.0,126.5 L65.1,125.8 L66.3,121.8 L67.4,119.1 L68.6,117.3 L69.8,114.5 L70.9,114.6 L72.1,112.9 L73.3,113.2 L74.4,114.1 L75.6,116.0 L76.7,117.0 L77.9,119.1 L79.1,122.8 L80.2,124.5 L81.4,127.9 L82.6,127.3 L83.7,127.8 L84.9,126.5 L86.0,125.7 L87.2,125.4 L88.4,122.8 L89.5,119.6 L90.7,118.9 L91.9,115.6 L93.0,114.8 L94.2,114.1 L95.3,114.1 L96.5,112.9 L97.7,116.0 L98.8,117.6 L100.0,119.5 L101.2,120.6 L102.3,124.9 L103.5,125.8 L104.7,126.8 L105.8,126.4 L107.0,126.3 L108.1,125.1 L109.3,124.9 L110.5,122.3 L111.6,120.0 L112.8,116.1 L114.0,113.7 L115.1,114.1 L116.3,113.0 L117.4,112.5 L118.6,113.0 L119.8,113.5 L120.9,115.1 L122.1,118.2 L123.3,121.2 L124.4,122.4 L125.6,124.4 L126.7,125.2 L127.9,124.8 L129.1,125.4 L130.2,124.9 L131.4,123.0 L132.6,120.7 L133.7,119.9 L134.9,115.1 L136.0,113.1 L137.2,111.0 L138.4,109.9 L139.5,110.5 L140.7,110.8 L141.9,112.0 L143.0,105.6 L144.2,100.7 L145.3,93.6 L146.5,85.9 L147.7,78.6 L148.8,70.8 L150.0,64.6 L151.2,58.3 L152.3,52.3 L153.5,47.7 L154.7,43.6 L155.8,42.7 L157.0,40.3 L158.1,42.8 L159.3,47.9 L160.5,53.5 L161.6,61.0 L162.8,70.3 L164.0,81.4 L165.1,90.6 L166.3,101.3 L167.4,112.7 L168.6,118.0 L169.8,121.1 L170.9,122.6 L172.1,122.9 L173.3,123.3 L174.4,121.1 L175.6,121.5 L176.7,119.9 L177.9,115.1 L179.1,113.7 L180.2,112.3 L181.4,109.2 L182.6,109.0 L183.7,106.9 L184.9,105.7 L186.0,106.8 L187.2,108.7 L188.4,111.9 L189.5,113.9 L190.7,116.8 L191.9,117.4 L193.0,119.7 L194.2,120.1 L195.3,121.7 L196.5,121.5 L197.7,118.7 L198.8,116.4 L200.0,114.5 L201.2,112.1 L202.3,109.6 L203.5,107.7 L204.7,107.5 L205.8,105.8 L207.0,106.1 L208.1,107.6 L209.3,109.0 L210.5,110.3 L211.6,112.6 L212.8,113.9 L214.0,115.4 L215.1,118.6 L216.3,118.6 L217.4,119.0 L218.6,118.8 L219.8,119.3 L220.9,118.0 L222.1,115.8 L223.3,113.5 L224.4,111.0 L225.6,107.7 L226.7,105.3 L227.9,104.4 L229.1,105.1 L230.2,105.2 L231.4,106.1 L232.6,109.9 L233.7,110.6 L234.9,112.4 L236.0,115.1 L237.2,117.1 L238.4,119.3 L239.5,120.8 L240.7,119.1 L241.9,119.5 L243.0,116.7 L244.2,114.1 L245.3,113.3 L246.5,110.9 L247.7,107.2 L248.8,106.0 L250.0,106.4 L251.2,106.1 L252.3,106.5 L253.5,105.7 L254.7,107.7 L255.8,111.8 L257.0,112.4 L258.1,114.4 L259.3,117.4 L260.5,119.8 L261.6,120.2 L262.8,121.4 L264.0,121.0 L265.1,117.1 L266.3,116.0 L267.4,114.1 L268.6,110.6 L269.8,109.7 L270.9,106.7 L272.1,105.6 L273.3,106.7 L274.4,106.9 L275.6,107.9 L276.7,109.7 L277.9,111.0 L279.1,114.4 L280.2,116.4 L281.4,119.4 L282.6,119.1 L283.7,121.6 L284.9,121.7 L286.0,120.8 L287.2,118.8 L288.4,118.2 L289.5,114.7 L290.7,113.4 L291.9,111.1 L293.0,109.2 L294.2,109.2 L295.3,107.5 L296.5,108.3 L297.7,109.7 L298.8,109.2 L300.0,113.1 L301.2,114.7 L302.3,116.6 L303.5,119.3 L304.7,121.8 L305.8,122.6 L307.0,122.9 L308.1,122.0 L309.3,122.8 L310.5,119.9 L311.6,118.6 L312.8,116.1 L314.0,112.5 L315.1,111.2 L316.3,109.6 L317.4,108.3 L318.6,107.9 L319.8,110.0 L320.9,111.1 L322.1,113.4 L323.3,115.8 L324.4,117.9 L325.6,120.9 L326.7,122.7 L327.9,124.2 L329.1,123.6 L330.2,124.1 L331.4,122.7 L332.6,121.0 L333.7,120.7 L334.9,117.6 L336.0,114.2 L337.2,112.4 L338.4,112.7 L339.5,111.9 L340.7,110.8 L341.9,112.5 L343.0,113.4 L344.2,115.8 L345.3,116.6 L346.5,118.8 L347.7,120.9 L348.8,125.0 L350.0,125.0 L351.2,125.9 L352.3,127.3 L353.5,124.5 L354.7,122.8 L355.8,122.8 L357.0,118.6 L358.1,117.7 L359.3,115.3 L360.5,112.2 L361.6,111.6 L362.8,113.0 L364.0,112.8 L365.1,113.7 L366.3,116.1 L367.4,118.7 L368.6,120.9 L369.8,122.3 L370.9,126.3 L372.1,126.4 L373.3,127.6 L374.4,128.9 L375.6,127.4 L376.7,125.2 L377.9,123.6 L379.1,122.5 L380.2,117.6 L381.4,115.9 L382.6,113.6 L383.7,114.6 L384.9,113.7 L386.0,114.6 L387.2,113.6 L388.4,116.7 L389.5,119.2 L390.7,120.9 L391.9,122.0 L393.0,124.4 L394.2,127.6 L395.3,128.9 L396.5,127.2 L397.7,127.5 L398.8,125.9 L400.0,125.7 L401.2,123.5 L402.3,119.3 L403.5,117.7 L404.7,116.7 L405.8,112.9 L407.0,113.0 L408.1,112.7 L409.3,115.4 L410.5,114.9 L411.6,119.1 L412.8,119.3 L414.0,122.8 L415.1,125.3 L416.3,126.5 L417.4,126.7 L418.6,128.8 L419.8,128.8 L420.9,126.5 L422.1,125.5 L423.3,123.6 L424.4,121.0 L425.6,118.8 L426.7,116.3 L427.9,114.4 L429.1,113.6 L430.2,112.2 L431.4,114.2 L432.6,115.0 L433.7,117.8 L434.9,119.6 L436.0,122.9 L437.2,124.5 L438.4,127.0 L439.5,126.3 L440.7,127.3 L441.9,127.9 L443.0,126.1 L444.2,123.1 L445.3,123.1 L446.5,118.8 L447.7,117.3 L448.8,114.9 L450.0,112.3 L451.2,112.4 L452.3,111.8 L453.5,111.8 L454.7,112.2 L455.8,115.7 L457.0,116.6 L458.1,119.3 L459.3,121.8 L460.5,124.3 L461.6,125.8 L462.8,127.2 L464.0,126.9 L465.1,126.1 L466.3,122.6 L467.4,121.8 L468.6,119.6 L469.8,117.3 L470.9,112.9 L472.1,111.0 L473.3,110.3 L474.4,110.8 L475.6,111.2 L476.7,112.2 L477.9,113.4 L479.1,116.4 L480.2,117.9 L481.4,120.7 L482.6,120.8 L483.7,122.3 L484.9,124.2 L486.0,125.0 L487.2,122.2 L488.4,122.5 L489.5,120.3 L490.7,118.8 L491.9,115.2 L493.0,112.6 L494.2,110.6 L495.3,110.0 L496.5,108.5 L497.7,110.0 L498.8,110.2 L500.0,112.3 L501.2,113.5 L502.3,116.8 L503.5,119.2 L504.7,120.5 L505.8,122.3 L507.0,122.3 L508.1,122.6 L509.3,121.3 L510.5,120.2 L511.6,118.1 L512.8,115.3 L514.0,114.1 L515.1,111.8 L516.3,108.0 L517.4,108.7 L518.6,106.4 L519.8,106.6 L520.9,109.0 L522.1,108.4 L523.3,110.2 L524.4,113.2 L525.6,115.3 L526.7,117.3 L527.9,120.8 L529.1,120.8 L530.2,121.2 L531.4,119.9 L532.6,118.7 L533.7,116.8 L534.9,115.2 L536.0,111.9 L537.2,110.0 L538.4,107.8 L539.5,107.5 L540.7,107.1 L541.9,106.7 L543.0,106.7 L544.2,108.8 L545.3,108.8 L546.5,111.8 L547.7,114.1 L548.8,116.3 L550.0,118.0 L551.2,119.8 L552.3,121.6 L553.5,119.2 L554.7,118.3 L555.8,117.3 L557.0,115.0 L558.1,112.2 L559.3,111.4 L560.5,107.4 L561.6,107.0 L562.8,106.5 L564.0,105.7 L565.1,105.0 L566.3,107.7 L567.4,108.1 L568.6,109.8 L569.8,113.5 L570.9,116.1 L572.1,117.9 L573.3,118.7 L574.4,119.2 L575.6,119.6 L576.7,118.6 L577.9,118.6 L579.1,116.3 L580.2,113.7 L581.4,110.0 L582.6,108.9 L583.7,106.5 L584.9,106.8 L586.0,106.3 L587.2,106.2 L588.4,106.3 L589.5,108.0 L590.7,110.3 L591.9,113.8 L593.0,115.6 L594.2,117.9 L595.3,119.5 L596.5,121.3 L597.7,119.4 L598.8,120.5 L600.0,117.1" />
+            <line class="mark" x1="150.4" x2="150.4" y1="8" y2="200" />
+            <circle class="mark-dot" cx="150.4" cy="62" r="5" />
+          </svg>
+          <figcaption id="inst-cap" class="inst-foot">
+            <span><b class="mono">43 h</b> sem equipe</span>
+            <span><b class="mono">5.160</b> leituras no período</span>
+            <span class="demo-tag">curva demonstrativa</span>
+          </figcaption>
         </figure>
       </div>
     </section>
 
-    <div class="trust-strip" aria-label="Fundamentos da plataforma">
-      <div class="shell trust-inner">
-        <span><i aria-hidden="true"></i>Dados enviados por MQTT com TLS</span>
-        <span><i aria-hidden="true"></i>Credencial exclusiva por dispositivo</span>
-        <span><i aria-hidden="true"></i>Histórico consultável por período</span>
-        <span><i aria-hidden="true"></i>Alertas e eventos no portal</span>
-      </div>
-    </div>
-
-    <!-- PROBLEMAS -->
-    <section class="section" id="problemas">
+    <!-- 2. O QUE MUDA -->
+    <section class="section" id="o-que-muda" aria-labelledby="muda-title">
       <div class="shell">
-        <div class="section-head">
-          <p class="eyebrow">O que o Fluxo resolve</p>
-          <h2>Quatro situações que o Fluxo foi feito para resolver.</h2>
-          <p>Sem planilhas e sem descobrir tarde demais. Cada situação abaixo corresponde a uma tela real do produto.</p>
-        </div>
-        <div class="pain-grid">
-          <article class="pain">
-            <p class="pain-q">“Só descubro que algo saiu do normal depois que o estrago está feito.”</p>
-            <h3>Você define o limite. O alerta aparece no portal.</h3>
-            <p>Cada regra tem métrica, condição e severidade. Quando o limite é ultrapassado, o portal abre um evento de alerta, e sua equipe registra o reconhecimento.</p>
-            <span class="pain-ev">Tela: Regras de alerta e eventos</span>
-          </article>
-          <article class="pain">
-            <p class="pain-q">“Preciso entender o que aconteceu ontem à noite.”</p>
-            <h3>O histórico responde.</h3>
-            <p>Consulte qualquer período, compare vários pontos no mesmo gráfico e veja valor atual, mínimo, máximo e média de cada medição.</p>
-            <span class="pain-ev">Tela: Histórico de telemetria</span>
-          </article>
-          <article class="pain">
-            <p class="pain-q">“Não sei se o sensor parou de enviar ou se está tudo normal.”</p>
-            <h3>Você vê quem está falando e quem parou.</h3>
-            <p>O painel mostra dispositivos online, offline e sem dados, e quando chegou a última leitura. Mensagens rejeitadas ficam em uma tela própria.</p>
-            <span class="pain-ev">Tela: Dashboard e dispositivos</span>
-          </article>
-          <article class="pain">
-            <p class="pain-q">“Cada ponto de medição está em um lugar e eu não enxergo tudo junto.”</p>
-            <h3>Um painel para todos os pontos.</h3>
-            <p>Todos os dispositivos aparecem organizados no mesmo lugar, cada um com identidade própria e credencial exclusiva para enviar dados.</p>
-            <span class="pain-ev">Tela: Dispositivos</span>
-          </article>
+        <div class="head">
+          <p class="eyebrow">O que muda</p>
+          <h2 id="muda-title">A prancheta registra dois instantes. <em>O resto do dia fica sem dono.</em></h2>
+          <p>A anotação manual continua valendo. O Fluxo cobre o intervalo entre uma anotação e outra, a madrugada e o fim de semana, e avisa quando algo sai do limite.</p>
         </div>
 
-        <div class="scope-row">
-          <p><strong>Funciona com qualquer grandeza que o dispositivo envie.</strong> Por onde começar:</p>
-          <ul>
-            <li>Câmaras frias e ambientes controlados</li>
-            <li>Equipamentos com telemetria</li>
-            <li><a href="#piloto">O seu cenário</a></li>
-          </ul>
+        <div class="compare">
+          <article class="cmp cmp-before">
+            <header><span class="cmp-tag">Hoje</span><h3>Prancheta, duas vezes por dia</h3></header>
+            <svg class="strip" viewBox="0 0 480 64" role="img" aria-label="Linha do dia com apenas duas anotações, às 8h e às 17h">
+              <line class="strip-base" x1="0" x2="480" y1="40" y2="40" />
+              <circle class="strip-dot" cx="160" cy="40" r="6" /><circle class="strip-dot" cx="340" cy="40" r="6" />
+              <text x="160" y="20" text-anchor="middle">08h</text><text x="340" y="20" text-anchor="middle">17h</text>
+              <text x="0" y="62">00h</text><text x="480" y="62" text-anchor="end">24h</text>
+            </svg>
+            <ul class="cmp-list">
+              <li>Um desvio às 23h aparece, se aparecer, na segunda de manhã.</li>
+              <li>Ninguém fica sabendo quando a geladeira para no fim de semana.</li>
+              <li>O registro depende de alguém lembrar de anotar.</li>
+            </ul>
+          </article>
+          <article class="cmp cmp-after">
+            <header><span class="cmp-tag">Com o Fluxo</span><h3>Registro contínuo e alerta onde a equipe estiver</h3></header>
+            <svg class="strip" viewBox="0 0 480 64" role="img" aria-label="Linha do dia com leitura contínua">
+              <path class="strip-trace" d="M0,40 C40,34 60,46 100,40 S160,34 200,41 S260,46 300,39 S360,33 400,40 S450,45 480,39" />
+              <text x="0" y="62">00h</text><text x="480" y="62" text-anchor="end">24h</text>
+              <text x="240" y="16" text-anchor="middle">2.880 leituras por dia em cada ponto</text>
+            </svg>
+            <ul class="cmp-list">
+              <li>Você fica sabendo no sábado à noite, não na segunda de manhã.</li>
+              <li>O alerta chega no Telegram, no e-mail e no portal, e alguém reconhece com nome e horário.</li>
+              <li>O histórico do período fica pronto para consulta, em gráfico e tabela.</li>
+            </ul>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- PLATAFORMA -->
-    <section class="section section-tint" id="plataforma">
+    <!-- 3. CENA SÁBADO 23h47 -->
+    <section class="section scene on-dark" id="sabado" aria-labelledby="scene-title">
       <div class="shell">
-        <div class="section-head split">
-          <div>
-            <p class="eyebrow">Na tela</p>
-            <h2>Veja como fica no portal.</h2>
+        <div class="scene-head">
+          <div class="head">
+            <p class="eyebrow">O alerta chegando</p>
+            <h2 id="scene-title"><span class="clock mono" aria-hidden="true">SÁB 23:47</span> Não há ninguém no local. <em>O aviso chega em três lugares ao mesmo tempo.</em></h2>
+            <p>A geladeira passou de 8 °C às 23h42 e continuou acima por 5 minutos. Às 23h47 o Fluxo abriu o alerta no portal, mandou a mensagem no Telegram e o e-mail. Às 23h52, a responsável de plantão reconheceu pelo celular.</p>
           </div>
-          <p>Capturas da interface atual do Fluxo, com dados demonstrativos. Escolha uma tela.</p>
+          <button class="btn btn-ghost btn-sm replay" type="button" data-replay aria-controls="scene-stage">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+            Ver de novo</button>
         </div>
 
-        <div class="screens">
-          <div class="screen-tabs" role="tablist" aria-label="Telas da plataforma">
-            <button role="tab" id="t-alert" aria-controls="p-screen" aria-selected="true" tabindex="0" data-screen="alert"><span>01</span>Alertas</button>
-            <button role="tab" id="t-hist" aria-controls="p-screen" aria-selected="false" tabindex="-1" data-screen="hist"><span>02</span>Histórico</button>
-            <button role="tab" id="t-dash" aria-controls="p-screen" aria-selected="false" tabindex="-1" data-screen="dash"><span>03</span>Dashboard</button>
-            <button role="tab" id="t-dev" aria-controls="p-screen" aria-selected="false" tabindex="-1" data-screen="dev"><span>04</span>Dispositivos</button>
-          </div>
-          <div class="screen-panel" id="p-screen" role="tabpanel" aria-labelledby="t-alert">
-            <div class="screen-text">
-              <h3 data-s-title>Regras que viram eventos</h3>
-              <p data-s-copy></p>
-              <ul data-s-list></ul>
-              <span class="flag flag-demo">Dados demonstrativos</span>
-            </div>
-            <div class="browser screen-frame">
-              <div class="browser-bar"><span></span><span></span><span></span><em data-s-bar>Alertas · Regras</em></div>
-              <div class="screen-scroll"><a data-screen-open href="./img/tela-alertas.webp" target="_blank" rel="noopener" aria-label="Abrir captura em tamanho original">
-                <img data-s-img src="./img/tela-alertas.webp" width="1600" height="656" alt="Tela de regras de alerta do Fluxo" /></a>
+        <div class="stage" id="scene-stage" data-stage>
+          <!-- Telegram no celular -->
+          <figure class="chan chan-phone" data-step="1">
+            <figcaption class="chan-cap"><span class="chan-n mono">01</span> Telegram, no celular</figcaption>
+            <div class="phone" aria-hidden="true">
+              <div class="phone-notch"></div>
+              <div class="phone-status mono"><span>23:47</span><span>4G ▮▮▮</span></div>
+              <div class="tg-head">
+                <span class="tg-avatar"><img src="assets/icon-fluxo-sm.webp" width="34" height="34" alt="" /></span>
+                <span><b>Fluxo Alertas</b><small>bot</small></span>
               </div>
-              <p class="screen-hint">Toque na tela para abrir a captura em tamanho original.</p>
+              <div class="tg-body">
+                <div class="tg-msg">
+                  <p class="tg-title">⚠️ Alerta aberto</p>
+                  <p><b>Geladeira de termolábeis</b><br />Temperatura <b class="mono">8,9 °C</b> (limite 8,0 °C)<br />Fora da faixa há 5 min</p>
+                  <p class="tg-time mono">23:47</p>
+                </div>
+                <div class="tg-btn" data-ack-btn>Reconhecer</div>
+                <div class="tg-msg tg-msg-ok" data-ack>
+                  <p>✔ Reconhecido por <b>Ana</b> às <b class="mono">23:52</b></p>
+                  <p class="tg-time mono">23:52</p>
+                </div>
+              </div>
+            </div>
+          </figure>
+
+          <!-- E-mail na caixa de entrada -->
+          <figure class="chan chan-mail" data-step="2">
+            <figcaption class="chan-cap"><span class="chan-n mono">02</span> E-mail, na caixa de entrada</figcaption>
+            <div class="mail" aria-hidden="true">
+              <div class="mail-bar"><span class="mail-dots"><i></i><i></i><i></i></span><span>Caixa de entrada</span></div>
+              <ul class="mail-list">
+                <li class="mail-new">
+                  <span class="mail-from">Fluxo Alertas</span>
+                  <span class="mail-subj"><b>Alerta: Geladeira de termolábeis acima de 8,0 °C</b> · 8,9 °C às 23:47, tolerância de 5 min excedida</span>
+                  <span class="mail-time mono">23:47</span>
+                </li>
+                <li><span class="mail-from">Distribuidora</span><span class="mail-subj">Confirmação de pedido</span><span class="mail-time mono">18:02</span></li>
+                <li><span class="mail-from">Contabilidade</span><span class="mail-subj">Guias do mês</span><span class="mail-time mono">sex</span></li>
+              </ul>
+              <div class="mail-open">
+                <p class="mail-open-subj">Alerta: Geladeira de termolábeis acima de 8,0 °C</p>
+                <p>Leitura: <b class="mono">8,9 °C</b> · Regra: acima de 8,0 °C por 5 min · Aberto às <span class="mono">23:47</span>.</p>
+                <p>Reconheça pelo portal ou pelo Telegram. Enquanto ficar aberto, você recebe lembretes.</p>
+              </div>
+            </div>
+          </figure>
+
+          <!-- Evento no portal -->
+          <figure class="chan chan-portal" data-step="3">
+            <figcaption class="chan-cap"><span class="chan-n mono">03</span> Evento no portal</figcaption>
+            <div class="portal" aria-hidden="true">
+              <div class="portal-bar"><b>Fluxo</b><span>Alertas · Eventos</span></div>
+              <div class="portal-row">
+                <div>
+                  <p class="portal-rule">Temperatura acima do limite</p>
+                  <p class="portal-scope mono">geladeira-termolabeis · &gt; 8 °C · 5 min</p>
+                </div>
+                <span class="pill pill-warn" data-state-open>Aberto</span>
+                <span class="pill pill-ok" data-state-ack>Reconhecido</span>
+              </div>
+              <ol class="portal-log mono">
+                <li><span>23:42</span> leitura acima de 8,0 °C</li>
+                <li><span>23:47</span> alerta aberto · portal, Telegram, e-mail</li>
+                <li data-ack><span>23:52</span> reconhecido por Ana</li>
+              </ol>
+            </div>
+          </figure>
+        </div>
+
+        <div class="ack-banner" data-ack aria-live="polite">
+          <span class="led led-ok" aria-hidden="true"></span>
+          <p><b>Reconhecido por Ana às 23h52.</b> Nome e horário ficam no histórico. Enquanto o alerta estiver aberto, chegam lembretes.</p>
+        </div>
+
+        <div class="scene-notes">
+          <div class="note">
+            <h3>Porta aberta não dispara alerta</h3>
+            <p>Às 19h10 alguém abriu a geladeira por 40 segundos e a leitura passou de 8 °C. Não houve alerta: a regra só dispara se o desvio continuar além da tolerância, definida com o responsável técnico na implantação.</p>
+          </div>
+          <div class="note">
+            <h3>Sensor parado também avisa</h3>
+            <p>Se um sensor deixa de enviar leituras, o Fluxo avisa. Silêncio não passa por normalidade.</p>
+          </div>
+          <p class="demo-line">Cena demonstrativa construída para esta página. Horários, leitura e nome são ilustrativos.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. SELETOR DE PERFIL + HUB -->
+    <section class="section section-tint" id="perfil" aria-labelledby="perfil-title">
+      <div class="shell">
+        <div class="head">
+          <p class="eyebrow">Onde o Fluxo trabalha</p>
+          <h2 id="perfil-title">Começamos pelas farmácias. <em>Serve a qualquer ambiente que precisa ficar na faixa.</em></h2>
+          <p>O mesmo sistema acompanha uma geladeira de termolábeis, uma sala de coleta ou uma câmara fria. Escolha o perfil mais próximo do seu: a dor, os pontos monitorados e a regra de exemplo mudam junto.</p>
+        </div>
+
+        <div class="profile-switch" role="radiogroup" aria-label="Perfil do estabelecimento">
+          <button type="button" role="radio" aria-checked="true" data-profile="manipulacao">Farmácia de manipulação</button>
+          <button type="button" role="radio" aria-checked="false" data-profile="drogaria" tabindex="-1">Drogaria e termolábeis</button>
+          <button type="button" role="radio" aria-checked="false" data-profile="clinica" tabindex="-1">Clínica e laboratório</button>
+          <button type="button" role="radio" aria-checked="false" data-profile="frio" tabindex="-1">Câmara fria e alimentos</button>
+        </div>
+
+        <div class="profile-grid">
+          <div class="profile-copy" aria-live="polite">
+            <p class="profile-norm mono" data-p="norm">Farmácias · RDC 67/2007</p>
+            <h3 data-p="pain">O laboratório fecha no sábado às 13h. A sala, o almoxarifado e a geladeira de insumos ficam 43 horas sem ninguém olhar.</h3>
+            <p data-p="detail">Umidade alta no almoxarifado e calor na sala de manipulação aparecem entre uma anotação e outra. Na geladeira de insumos, o problema costuma aparecer de madrugada.</p>
+            <div class="rule">
+              <p class="rule-cap mono">Regra de exemplo</p>
+              <p class="rule-line mono" data-p="rule">SE umidade · almoxarifado &gt; 70 % POR 30 min<br />ENTÃO alerta → portal + Telegram + e-mail</p>
+              <p class="rule-note"><span class="lvl lvl-pilot">No piloto</span> Limites e tolerâncias definidos com o responsável técnico na implantação.</p>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- COMO FUNCIONA -->
-    <section class="section" id="como-funciona">
-      <div class="shell">
-        <div class="section-head">
-          <p class="eyebrow">Como funciona</p>
-          <h2>Do sensor ao alerta, em quatro etapas.</h2>
-        </div>
-        <ol class="pipeline">
-          <li>
-            <span class="step-n">01</span>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v10m0 0a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-3-7h6"/></svg>
-            <h3>Sensor</h3>
-            <p>Uma sonda no ponto que importa, ou um equipamento que já gera dados.</p>
-          </li>
-          <li>
-            <span class="step-n">02</span>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12a7 7 0 0 1 14 0M8 15a4 4 0 0 1 8 0m-4 3h.01"/></svg>
-            <h3>Conectividade</h3>
-            <p>As leituras seguem por MQTT com TLS. Avaliamos a conexão em cada instalação.</p>
-          </li>
-          <li>
-            <span class="step-n">03</span>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-            <h3>Plataforma</h3>
-            <p>Cada leitura chega identificada por dispositivo e métrica, e fica no painel da sua equipe.</p>
-          </li>
-          <li>
-            <span class="step-n">04</span>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h16M7 15l3-4 3 2 4-6"/><path d="M18 3v3m0 3h.01"/></svg>
-            <h3>Histórico e alerta</h3>
-            <p>As séries ficam guardadas e as regras abrem eventos quando o limite é atingido.</p>
-          </li>
-        </ol>
-        <div class="example-strip" aria-label="Exemplo do caminho do dado">
-          <span class="flag flag-exemplo">Exemplo</span>
-          <span class="ex-item"><b>Câmara fria 01</b> mede temperatura</span>
-          <span class="ex-arrow" aria-hidden="true">→</span>
-          <span class="ex-item">leitura entra no histórico</span>
-          <span class="ex-arrow" aria-hidden="true">→</span>
-          <span class="ex-item">regra <b>&gt; 8 °C</b> está ativa</span>
-          <span class="ex-arrow" aria-hidden="true">→</span>
-          <span class="ex-item">evento de <b>Aviso</b> é aberto</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTRATACAO -->
-    <section class="section section-dark" id="contratacao">
-      <div class="shell">
-        <div class="section-head split light">
-          <div>
-            <p class="eyebrow">Contratação</p>
-            <h2>Comece pelo que sua operação ainda não tem.</h2>
+          <div class="hub" id="hub">
+            <svg class="hub-lines" id="hubLines" aria-hidden="true"></svg>
+            <article class="seg"><div class="seg-top"><span class="seg-no mono">01</span><span class="seg-meas mono" data-s="m">R1 · temperatura</span></div><h4 data-s="t">Geladeira de insumos</h4><p data-s="d">Faixa de 2 a 8 °C. A sonda passa pela vedação da porta e o visor mostra a leitura do lado de fora.</p></article>
+            <article class="seg"><div class="seg-top"><span class="seg-no mono">02</span><span class="seg-meas mono" data-s="m">Central · temp. + umidade</span></div><h4 data-s="t">Sala de manipulação</h4><p data-s="d">Temperatura e umidade da sala, lidas a cada 30 segundos.</p></article>
+            <article class="seg"><div class="seg-top"><span class="seg-no mono">03</span><span class="seg-meas mono" data-s="m">Central · temp. + umidade</span></div><h4 data-s="t">Almoxarifado de matérias-primas</h4><p data-s="d">Umidade e calor que a prancheta não pega, principalmente no verão e nos dias de chuva.</p></article>
+            <article class="seg"><div class="seg-top"><span class="seg-no mono">04</span><span class="seg-meas mono" data-s="m">Central · temp. + umidade</span></div><h4 data-s="t">Controle de qualidade</h4><p data-s="d">Registro contínuo da sala onde ficam reagentes e amostras de referência.</p></article>
+            <figure class="hub-core" id="hubCore"><img src="assets/icon-fluxo.webp" width="160" height="160" loading="lazy" alt="Marca do Fluxo" /></figure>
           </div>
-          <p>Você não precisa trocar o que já funciona. Escolha o ponto de partida, e o piloto define o resto.</p>
-        </div>
-
-        <div class="path-grid">
-          <article class="path">
-            <span class="offer-tag">Ainda não tenho sensores</span>
-            <h3>Solução completa</h3>
-            <p>Definimos com você o que medir, onde e com qual limite, e acompanhamos a implantação no piloto.</p>
-            <ul>
-              <li>Diagnóstico do cenário e do primeiro ponto de medição</li>
-              <li>Escolha dos sensores e da conectividade</li>
-              <li>Cadastro dos dispositivos e das regras iniciais</li>
-              <li>Plataforma com painel, histórico e alertas</li>
-            </ul>
-          </article>
-          <article class="path">
-            <span class="offer-tag ghost">Já tenho sensores ou dados chegando</span>
-            <h3>Só a plataforma</h3>
-            <p>Conectamos dispositivos compatíveis e você passa a ter painel, histórico e alertas.</p>
-            <ul>
-              <li>Integração de dispositivos compatíveis, avaliada caso a caso</li>
-              <li>Painel, histórico, regras e eventos de alerta</li>
-              <li>Mensagens rejeitadas e saúde da plataforma em telas próprias</li>
-            </ul>
-          </article>
-        </div>
-        <div class="path-cta">
-          <a class="button button-light" href="#piloto">Conversar sobre um piloto <span aria-hidden="true">→</span></a>
-          <p class="offer-note"><span class="flag flag-proto on-dark">Hoje</span> Alertas e notificações no portal. E-mail ainda pendente; WhatsApp e Telegram não são canais disponíveis. Prazo, investimento e responsabilidades entram na proposta do piloto.</p>
         </div>
       </div>
     </section>
 
-    <!-- COLETA EM CAMPO -->
-    <section class="section" id="sensor">
-      <div class="shell field-grid">
-        <div class="field-copy">
-          <p class="eyebrow">Coleta em campo <span class="flag flag-proto">Em desenvolvimento</span></p>
-          <h2>Se você ainda não tem sensores, a gente ajuda a definir.</h2>
-          <p>Avaliamos os sensores que você já usa ou definimos a coleta para o piloto. O R1 é o nó de campo da Officina404, com foco inicial em temperatura. Hoje ele existe como protótipo de bancada. Gabinete, alimentação e certificações ainda serão definidos.</p>
-          <a class="button button-ghost" href="#piloto" data-interest="ficha-r1">Pedir a ficha técnica do R1</a>
+    <!-- 5. NA TELA -->
+    <section class="section" id="na-tela" aria-labelledby="tela-title">
+      <div class="shell">
+        <div class="head">
+          <p class="eyebrow">Na tela</p>
+          <h2 id="tela-title">O portal que você vai usar <em>nos 30 dias</em></h2>
+          <p>Capturas reais do portal Fluxo, com dados demonstrativos. Clique na imagem para ampliar.</p>
         </div>
-        <div class="field-photos">
-          <figure>
-            <img src="./img/r1-foto-prototipo.webp" width="650" height="780" alt="Protótipo do R1 ligado, com display mostrando a temperatura e uma sonda de cabo trançado" loading="lazy" />
-            <figcaption><span class="flag flag-real">Foto real</span> Protótipo de bancada.</figcaption>
-          </figure>
-          <figure>
-            <img src="./img/r1-conceito-caixa.webp" width="1536" height="1024" alt="Ilustração conceitual do R1 em caixa com antena, display e duas sondas de temperatura" loading="lazy" />
-            <figcaption><span class="flag flag-proposto">Conceito</span> Gabinete proposto. Ainda não fabricado.</figcaption>
-          </figure>
+
+        <div class="tabs" role="tablist" aria-label="Telas do portal">
+          <button class="tab" role="tab" id="t-painel" aria-controls="p-painel" aria-selected="true">Painel</button>
+          <button class="tab" role="tab" id="t-alertas" aria-controls="p-alertas" aria-selected="false" tabindex="-1">Regras de alerta</button>
+          <button class="tab" role="tab" id="t-hist" aria-controls="p-hist" aria-selected="false" tabindex="-1">Histórico</button>
+          <button class="tab" role="tab" id="t-consulta" aria-controls="p-consulta" aria-selected="false" tabindex="-1">Consulta por período</button>
+          <button class="tab" role="tab" id="t-disp" aria-controls="p-disp" aria-selected="false" tabindex="-1">Dispositivos</button>
+        </div>
+
+        <div class="tab-panel active" role="tabpanel" id="p-painel" aria-labelledby="t-painel">
+          <div class="panel-copy"><h3>Todos os pontos em uma tela</h3><p>Quantos sensores estão enviando, quando chegou a última leitura e se há algo fora do normal. Pelo navegador, no computador ou no celular.</p></div>
+          <button class="shot" type="button" data-zoom="assets/tela-dashboard.webp" data-zoom-alt="Dashboard do portal Fluxo"><img src="assets/tela-dashboard.webp" width="1600" height="708" loading="lazy" alt="Dashboard do portal Fluxo com indicadores de dispositivos e última telemetria" /><span class="shot-cap">Portal Fluxo · Dashboard · dados demonstrativos</span></button>
+        </div>
+        <div class="tab-panel" role="tabpanel" id="p-alertas" aria-labelledby="t-alertas" hidden>
+          <div class="panel-copy"><h3>Limite, tolerância e severidade por regra</h3><p>Cada regra diz qual métrica, qual ponto e qual condição. Eventos, notificações e diagnóstico ficam em abas ao lado.</p></div>
+          <button class="shot" type="button" data-zoom="assets/tela-alertas.webp" data-zoom-alt="Regras de alerta do portal Fluxo"><img src="assets/tela-alertas.webp" width="1600" height="656" loading="lazy" alt="Tela de regras de alerta com uma regra de temperatura acima de 8 °C" /><span class="shot-cap">Portal Fluxo · Regras de alerta · dados demonstrativos</span></button>
+        </div>
+        <div class="tab-panel" role="tabpanel" id="p-hist" aria-labelledby="t-hist" hidden>
+          <div class="panel-copy"><h3>A curva de qualquer período</h3><p>Valor atual, mínimo, máximo e média de cada ponto, com vários pontos no mesmo gráfico.</p></div>
+          <button class="shot" type="button" data-zoom="assets/tela-historico-grafico.webp" data-zoom-alt="Histórico em gráfico"><img src="assets/tela-historico-grafico.webp" width="1400" height="582" loading="lazy" alt="Gráfico histórico de temperatura de duas câmaras" /><span class="shot-cap">Portal Fluxo · Histórico · dados demonstrativos</span></button>
+        </div>
+        <div class="tab-panel" role="tabpanel" id="p-consulta" aria-labelledby="t-consulta" hidden>
+          <div class="panel-copy"><h3>Escolha o ponto e o intervalo</h3><p>Últimas 24 horas, o fim de semana inteiro ou um período específico, em gráfico ou tabela. É o que você abre quando a fiscalização pergunta.</p></div>
+          <button class="shot shot-tall" type="button" data-zoom="assets/tela-explorer.webp" data-zoom-alt="Consulta por período"><img src="assets/tela-explorer.webp" width="1400" height="1472" loading="lazy" alt="Consulta por período com seleção de dispositivos, métricas e gráfico" /><span class="shot-cap">Portal Fluxo · Consulta por período · dados demonstrativos</span></button>
+        </div>
+        <div class="tab-panel" role="tabpanel" id="p-disp" aria-labelledby="t-disp" hidden>
+          <div class="panel-copy"><h3>Cada equipamento com acesso próprio</h3><p>Lista de equipamentos com estado e horário da última leitura. Cada um se conecta com credencial própria e conexão criptografada.</p></div>
+          <button class="shot" type="button" data-zoom="assets/tela-dispositivos.webp" data-zoom-alt="Lista de dispositivos"><img src="assets/tela-dispositivos.webp" width="1600" height="651" loading="lazy" alt="Lista de dispositivos com estado e última telemetria" /><span class="shot-cap">Portal Fluxo · Dispositivos · dados demonstrativos</span></button>
         </div>
       </div>
     </section>
 
-    <!-- PILOTO -->
-    <section class="section section-tint" id="piloto">
-      <div class="shell pilot-grid">
-        <div class="pilot-copy">
-          <p class="eyebrow">Comece por um piloto</p>
-          <h2>Um ponto de medição, uma pergunta real.</h2>
-          <p>O piloto começa pequeno e mostra, com a sua equipe, se o monitoramento resolve o problema antes de expandir.</p>
-          <ol class="pilot-steps">
-            <li><span>1</span><div><strong>Conversa inicial</strong><p>Você conta o que precisa acompanhar e o que já tem instalado.</p></div></li>
-            <li><span>2</span><div><strong>Escopo do piloto</strong><p>Definimos o ponto de medição, o limite e o resultado esperado.</p></div></li>
-            <li><span>3</span><div><strong>Implantação</strong><p>Sensores ou integração, cadastro dos dispositivos e primeiras regras.</p></div></li>
-            <li><span>4</span><div><strong>Avaliação</strong><p>Analisamos o histórico juntos e decidimos os próximos pontos.</p></div></li>
-          </ol>
+    <!-- 6. EXIGÊNCIA → RESPOSTA -->
+    <section class="section section-tint" id="exigencias" aria-labelledby="exig-title">
+      <div class="shell">
+        <div class="head">
+          <p class="eyebrow">Exigência e resposta</p>
+          <h2 id="exig-title">Para cada exigência da rotina, <em>uma resposta no sistema</em></h2>
+          <p>Em farmácias, o Fluxo apoia o registro exigido pela RDC 67 e complementa o controle manual. Em clínicas, laboratórios e câmaras frias, vale o mesmo: registro contínuo, alerta e histórico. O estado de cada item está ao lado, sem arredondar.</p>
+        </div>
+        <div class="req" role="table" aria-label="Exigência, como o Fluxo atende e estado">
+          <div class="req-row req-head" role="row"><span role="columnheader">Exigência da rotina</span><span role="columnheader">Como o Fluxo atende</span><span role="columnheader">Estado</span></div>
+          <div class="req-row" role="row"><span role="cell">Registrar temperatura e umidade dos ambientes</span><span role="cell">Leitura a cada 30 segundos, de dia, de noite e no fim de semana.</span><span role="cell"><span class="lvl lvl-ok">Disponível</span></span></div>
+          <div class="req-row" role="row"><span role="cell">Saber de um desvio fora do expediente</span><span role="cell">Alerta no portal, no Telegram e por e-mail, com tolerância de tempo para não disparar à toa.</span><span role="cell"><span class="lvl lvl-ok">Disponível</span></span></div>
+          <div class="req-row" role="row"><span role="cell">Mostrar quem tomou providência</span><span role="cell">Reconhecimento com nome e horário. Lembretes enquanto o alerta estiver aberto.</span><span role="cell"><span class="lvl lvl-ok">Disponível</span></span></div>
+          <div class="req-row" role="row"><span role="cell">Perceber que um equipamento parou</span><span role="cell">Aviso quando um sensor deixa de enviar leituras.</span><span role="cell"><span class="lvl lvl-ok">Disponível</span></span></div>
+          <div class="req-row" role="row"><span role="cell">Não perder registro quando a internet cai</span><span role="cell">As leituras ficam guardadas no local e são enviadas quando a conexão volta.</span><span role="cell"><span class="lvl lvl-ok">Disponível</span></span></div>
+          <div class="req-row" role="row"><span role="cell">Consultar um período na fiscalização ou auditoria</span><span role="cell">Histórico por período em gráfico e tabela, no portal.</span><span role="cell"><span class="lvl lvl-ok">Disponível</span></span></div>
+          <div class="req-row" role="row"><span role="cell">Definir faixas e tolerâncias conforme o procedimento interno</span><span role="cell">Configurados com o responsável técnico na implantação.</span><span role="cell"><span class="lvl lvl-pilot">No piloto</span></span></div>
+          <div class="req-row" role="row"><span role="cell">Ter o registro do período em documento</span><span role="cell">Relatório do período entregue pela equipe.</span><span role="cell"><span class="lvl lvl-pilot">No piloto</span></span></div>
+          <div class="req-row" role="row"><span role="cell">Exportar o relatório direto do portal</span><span role="cell">Exportação de relatório no portal.</span><span role="cell"><span class="lvl lvl-next">Próxima etapa</span></span></div>
+        </div>
+        <p class="req-foot">Calibração dos instrumentos e enquadramento regulatório seguem com o responsável técnico. O Fluxo não emite certificado de calibração.</p>
+      </div>
+    </section>
+
+    <!-- 6b. EQUIPAMENTOS -->
+    <section class="section" id="equipamentos" aria-labelledby="equip-title">
+      <div class="shell">
+        <div class="head">
+          <p class="eyebrow">Equipamentos Fluxo</p>
+          <h2 id="equip-title">Uma linha de sensores, <em>um portal para todos</em></h2>
+          <p>Cada equipamento tem uma função. Todos mandam para o mesmo portal, com os mesmos alertas e o mesmo histórico. Hoje o diagnóstico usa os dois primeiros.</p>
+        </div>
+        <div class="equip">
+          <article class="eq eq-feature">
+            <img src="assets/r1-prototipo.webp" width="520" height="624" loading="lazy" alt="R1 em bancada, com visor mostrando a temperatura e a sonda" />
+            <div>
+              <div class="eq-top"><span class="eq-code mono">R1</span><span class="lvl lvl-ok">Disponível</span></div>
+              <h3>Sensor de temperatura</h3>
+              <p>Para geladeiras, câmaras e freezers. A sonda entra pela vedação da porta e o visor mostra a leitura do lado de fora.</p>
+              <p class="eq-note">Na foto, a placa em bancada. <span class="lvl lvl-next">Próxima etapa</span> gabinete final.</p>
+            </div>
+          </article>
+          <article class="eq">
+            <div class="eq-top"><span class="eq-code mono">Central</span><span class="lvl lvl-ok">Disponível</span></div>
+            <h3>Temperatura e umidade do ambiente</h3>
+            <p>Fica na sala, mede o ar e guarda as leituras quando a internet cai.</p>
+          </article>
+          <article class="eq">
+            <div class="eq-top"><span class="eq-code mono">R2</span><span class="lvl lvl-next">Próxima etapa</span></div>
+            <h3>Sensor de corrente</h3>
+            <p>Mostra se um equipamento está ligado e avisa quando a energia cai.</p>
+          </article>
+          <article class="eq">
+            <div class="eq-top"><span class="eq-code mono">R3</span><span class="lvl lvl-next">Próxima etapa</span></div>
+            <h3>Sensor de movimento</h3>
+            <p>Vibração e movimento de motores, compressores e bombas.</p>
+          </article>
+          <article class="eq">
+            <div class="eq-top"><span class="eq-code mono">R4</span><span class="lvl lvl-next">Próxima etapa</span></div>
+            <h3>Sensor de ambiente</h3>
+            <p>Temperatura, umidade e pressão em um equipamento compacto, para vários pontos por sala.</p>
+          </article>
+          <article class="eq">
+            <div class="eq-top"><span class="eq-code mono">R5</span><span class="lvl lvl-next">Próxima etapa</span></div>
+            <h3>Estado de máquinas</h3>
+            <p>Saber se a máquina está ligada, parada, operando ou em falha.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. EVIDÊNCIAS -->
+    <section class="section section-tint" id="evidencias" aria-labelledby="ev-title">
+      <div class="shell">
+        <div class="head">
+          <p class="eyebrow">Medido em operação</p>
+          <h2 id="ev-title">Medido em operação, <em>com data e escopo</em></h2>
+          <p>Equipamentos reais enviando para o portal em operação contínua. Cada número diz o que foi medido e quando.</p>
+        </div>
+        <div class="evidence-grid">
+          <article class="ev">
+            <p class="ev-num mono">81,8<small>h</small></p>
+            <h3>Central sem lacunas</h3>
+            <p>9.739 leituras seguidas, nenhuma faltando e nenhuma rejeitada, com temperatura e umidade.</p>
+            <p class="src mono">24 a 27/09/2026 · Central · operação controlada</p>
+          </article>
+          <article class="ev">
+            <p class="ev-num mono">28<small>quedas</small></p>
+            <h3>O Wi-Fi caiu e voltou, sem perder leitura</h3>
+            <p>As leituras ficaram guardadas no local durante cada queda e foram enviadas quando a conexão voltou.</p>
+            <p class="src mono">mesma janela de 81,8 h</p>
+          </article>
+          <article class="ev">
+            <p class="ev-num mono">122,6<small>h</small></p>
+            <h3>R1 em operação contínua</h3>
+            <p>40.442 leituras enviadas. Na janela de 24 h conferida, nenhuma faltando.</p>
+            <p class="src mono">10 a 15/10/2026 · R1 + Central · operação controlada</p>
+          </article>
+          <article class="ev">
+            <p class="ev-num mono">30<small>s</small></p>
+            <h3>Intervalo de leitura</h3>
+            <p>Cerca de 2.880 leituras por dia em cada ponto, no lugar de duas anotações.</p>
+            <p class="src mono">configuração de operação da Central</p>
+          </article>
+        </div>
+        <div class="evidence-foot">
+          <div class="scope"><h3>O que estes números medem</h3><p>Continuidade do registro e entrega das leituras ao portal, em um ambiente com uma Central e um R1. Não são certificado de calibração nem teste de carga.</p></div>
+          <div class="scope"><h3>Calibração e enquadramento</h3><p>Ficam com o responsável técnico. No diagnóstico, combinamos o que o seu procedimento exige e como o Fluxo complementa o controle manual.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. DIAGNÓSTICO -->
+    <section class="section section-ink on-dark" id="diagnostico" aria-labelledby="diag-title">
+      <div class="shell">
+        <div class="head">
+          <p class="eyebrow">Diagnóstico de 30 dias</p>
+          <h2 id="diag-title">Trinta dias de registro real no seu estabelecimento. <em>Sem custo e sem obrigação.</em></h2>
+          <p>Quanto custa refazer um lote, descartar o conteúdo de uma geladeira ou perder uma câmara de produtos? Você sabe essa resposta melhor do que nós. O diagnóstico mostra se esse risco existe na sua operação.</p>
         </div>
 
-        <form class="pilot-form" aria-describedby="form-note" method="post">
-          <div class="form-head"><h3 data-form-title>Conversar sobre um piloto</h3><p>Conte o essencial. Os detalhes do piloto ficam para a conversa.</p></div>
-          <input type="hidden" name="interesse" value="piloto" />
-          <label>Nome<input type="text" name="nome" autocomplete="name" maxlength="120" placeholder="Seu nome" required /></label>
-          <label>E-mail ou telefone<input type="text" name="contato" autocomplete="email" maxlength="160" placeholder="voce@empresa.com ou (11) 99999-9999" aria-describedby="contact-help" required /></label>
-          <p class="form-note" id="contact-help">Informe um e-mail válido ou um telefone com DDD.</p>
-          <label>O que você precisa? <span class="optional">(opcional)</span><textarea name="cenario" rows="3" maxlength="2000" placeholder="Conte o que quer monitorar ou peça a ficha técnica do R1."></textarea></label>
+        <ol class="track">
+          <li><span class="track-n mono">15 min</span><h3>Conversa</h3><p>Entendemos sua rotina e escolhemos o ponto mais crítico.</p></li>
+          <li><span class="track-n mono">dia 0</span><h3>Instalação</h3><p>Presencial, sem obra e sem furar equipamento. Limites definidos com o responsável técnico.</p></li>
+          <li><span class="track-n mono">30 dias</span><h3>Registro e alertas reais</h3><p>Portal, Telegram e e-mail funcionando na sua operação.</p></li>
+          <li><span class="track-n mono">15 min</span><h3>Reunião com o histórico</h3><p>Olhamos juntos as madrugadas, o fim de semana e cada alerta.</p></li>
+          <li><span class="track-n mono">decisão</span><h3>Você decide</h3><p>Seguir ou não. Se não seguir, retiramos o equipamento sem custo.</p></li>
+        </ol>
+
+        <div class="diag-grid">
+          <div class="keep">
+            <h3>O que fica com você, mesmo sem contratar</h3>
+            <ul class="ticks">
+              <li><b>Relatório do período</b>, entregue pela equipe <span class="lvl lvl-pilot">No piloto</span></li>
+              <li>A curva real das madrugadas e dos fins de semana do ponto monitorado</li>
+              <li>Os limites e tolerâncias que definimos juntos para o seu procedimento</li>
+            </ul>
+          </div>
+          <div class="terms">
+            <dl>
+              <div><dt>Custo nos 30 dias</dt><dd>Nenhum: sem instalação e sem mensalidade</dd></div>
+              <div><dt>Depois do diagnóstico</dt><dd>Continuidade opcional, com proposta ao final dos 30 dias.</dd></div>
+              <div><dt>Onde</dt><dd>Lages e região, com instalação presencial</dd></div>
+              <div data-slots-row hidden><dt>Vagas neste ciclo</dt><dd><span data-slots></span> em Lages</dd></div>
+            </dl>
+            <a class="btn btn-primary btn-block" href="#contato" data-cta="diagnostico">Quero o diagnóstico de 30 dias</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. QUEM FAZ -->
+    <section class="section" id="quem-faz" aria-labelledby="quem-title">
+      <div class="shell">
+        <div class="who-head">
+          <div class="head">
+            <p class="eyebrow">Sobre a Officina 404</p>
+            <h2 id="quem-title">Desenvolvimento próprio, <em>implantação acompanhada</em></h2>
+            <p>O Fluxo é desenvolvido pela Officina 404, em Lages (SC). Sensores, Central e portal são projetados em conjunto, o que simplifica a implantação e mantém um único responsável pela solução, do equipamento instalado ao histórico no portal.</p>
+          </div>
+          <dl class="who-facts">
+            <div><dt>Sede</dt><dd>Lages, SC</dd></div>
+            <div><dt>Atendimento</dt><dd>Presencial na região</dd></div>
+            <div><dt>Solução</dt><dd>Sensores + Central + portal</dd></div>
+          </dl>
+        </div>
+        <ul class="who-cards">
+          <li><svg class="who-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 17.5h7M17.5 14v7"/></svg><h3>Solução integrada</h3><p>Sensores, Central e portal projetados para trabalhar juntos. Um único ponto de contato para a solução inteira.</p></li>
+          <li><svg class="who-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg><h3>Implantação acompanhada</h3><p>Mapeamento dos pontos críticos, instalação no local e limites definidos com o responsável técnico.</p></li>
+          <li><svg class="who-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><h3>Dados protegidos</h3><p>Acesso ao portal por usuário, credencial própria em cada equipamento e conexão criptografada.</p></li>
+          <li><svg class="who-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5M4 19h16"/><path d="M8 15l3-4 3 2 5-6"/></svg><h3>Medição documentada</h3><p>Cada número publicado tem data e escopo. O que ainda não está pronto aparece como próxima etapa.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 10. FAQ -->
+    <section class="section section-tint" id="faq" aria-labelledby="faq-title">
+      <div class="shell">
+        <div class="head">
+          <p class="eyebrow">Dúvidas</p>
+          <h2 id="faq-title">Antes de <em>começar o diagnóstico</em></h2>
+        </div>
+        <div class="faq">
+          <details open><summary>Onde recebo os alertas?</summary><p>No portal, no Telegram e por e-mail. Cada alerta pode ser reconhecido pela equipe, com nome e horário registrados, inclusive pelo botão no Telegram. Enquanto ficar aberto, chegam lembretes. O WhatsApp desta página serve só para falar com a equipe; ele não é canal de alerta.</p></details>
+          <details><summary>Porta aberta vai disparar alerta toda hora?</summary><p>Não. Cada regra tem um tempo de tolerância: o alerta só abre se a leitura continuar fora da faixa além desse tempo. Os limites e a tolerância são definidos com o responsável técnico na implantação.</p></details>
+          <details><summary>E se a internet ou o Wi-Fi cair?</summary><p>As leituras ficam guardadas no local e são enviadas quando a conexão volta. Em 81,8 horas de operação contínua, o Wi-Fi caiu e voltou 28 vezes sem perda de leituras. O R1 mostra no visor o estado da conexão.</p></details>
+          <details><summary>Precisa furar a geladeira ou fazer obra?</summary><p>Não. A sonda do R1 passa pela vedação da porta e o equipamento fica do lado de fora. Nas salas, a Central é fixada na parede, sem obra.</p></details>
+          <details><summary>O Fluxo serve só para farmácias?</summary><p>Não. Começamos pelas farmácias de Lages, mas o mesmo sistema acompanha clínicas, laboratórios, câmaras frias e estoques climatizados. Muda o ponto monitorado e a faixa; o portal, os alertas e o histórico são os mesmos.</p></details>
+          <details><summary>Preciso comprar sensores novos?</summary><p>Para o diagnóstico, levamos o equipamento. Se você já tem sensores, avaliamos se eles conseguem enviar dados para o Fluxo.</p></details>
+          <details><summary>O Fluxo garante conformidade com a RDC 67 ou outra norma?</summary><p>Não prometemos isso. Em farmácias, o Fluxo apoia o registro exigido pela RDC 67 e complementa o controle manual: registra temperatura e umidade de forma contínua, guarda o histórico e documenta alertas e reconhecimentos. Calibração e enquadramento seguem com o responsável técnico.</p></details>
+          <details><summary>Consigo levar o histórico para uma fiscalização?</summary><p>No portal, você consulta qualquer período em gráfico e tabela. No diagnóstico, a equipe entrega o relatório do período. A exportação de relatório direto pelo portal é uma próxima etapa.</p></details>
+          <details><summary>Quanto custa depois dos 30 dias?</summary><p>O valor é apresentado ao fim do diagnóstico, de acordo com o número de pontos. Durante os 30 dias não há custo, e você não tem obrigação de seguir.</p></details>
+          <details><summary>As telas mostram dados de clientes?</summary><p>Não. As capturas são do portal real, com dados demonstrativos. A cena do sábado e a curva do topo também são demonstrativas.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. CTA FINAL + FORMULÁRIO + MENSAGEM -->
+    <section class="section section-ink on-dark" id="contato" aria-labelledby="contato-title">
+      <div class="shell contact-grid">
+        <div class="contact-copy">
+          <p class="eyebrow">Agendar o diagnóstico</p>
+          <h2 id="contato-title">Descubra o que acontece no seu estabelecimento <em>quando ninguém está olhando</em></h2>
+          <p><span data-slots-text>Agende seu diagnóstico em Lages e região</span>. Respondemos em horário comercial.</p>
+
+          <div class="gen" id="gerador">
+            <h3>Prefere mandar uma mensagem?</h3>
+            <p class="gen-sub">Monte a mensagem e abra no WhatsApp. Nada é enviado sem você confirmar lá.</p>
+            <div class="gen-fields">
+              <label>Perfil
+                <select id="genProfile">
+                  <option value="manipulacao">Farmácia de manipulação</option>
+                  <option value="drogaria">Drogaria e termolábeis</option>
+                  <option value="clinica">Clínica e laboratório</option>
+                  <option value="frio">Câmara fria e alimentos</option>
+                </select>
+              </label>
+              <label>Cidade<input id="genCity" type="text" maxlength="60" value="Lages" autocomplete="address-level2" /></label>
+              <label>Ponto que mais preocupa
+                <select id="genPoint">
+                  <option>Geladeira ou câmara</option>
+                  <option>Sala ou laboratório</option>
+                  <option>Estoque ou almoxarifado</option>
+                  <option>Ainda não sei</option>
+                </select>
+              </label>
+            </div>
+            <label class="gen-preview-l">Mensagem<textarea id="genText" rows="5" maxlength="900"></textarea></label>
+            <a class="btn btn-wa btn-block" id="genSend" href="https://wa.me/5549988079237" target="_blank" rel="noopener" data-cta="gerador">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+              Abrir no WhatsApp<span class="hide-sm">&nbsp;· (49) 98807-9237</span></a>
+          </div>
+        </div>
+
+        <form class="lead-form" id="leadForm" method="post" aria-describedby="form-note" novalidate>
+          <h3>Pedir o diagnóstico de 30 dias</h3>
+          <p class="sub">Retorno pelo e-mail ou telefone informado.</p>
+          <input type="hidden" name="interesse" value="diagnostico-30-dias" />
+          <input type="hidden" name="origem" value="landing-v5" />
+          <label>Seu nome<input type="text" name="nome" autocomplete="name" maxlength="120" placeholder="Ex.: Mariana Silva" required /></label>
+          <label>E-mail ou telefone<input type="text" name="contato" autocomplete="email" maxlength="160" placeholder="voce@empresa.com.br ou (49) 99999-9999" required /></label>
+          <label>Estabelecimento<input type="text" name="empresa" autocomplete="organization" maxlength="140" placeholder="Nome da farmácia, clínica ou empresa" /></label>
+          <div class="row">
+            <label>Perfil
+              <select name="segmento" id="formProfile">
+                <option>Farmácia de manipulação</option>
+                <option>Drogaria e termolábeis</option>
+                <option>Clínica e laboratório</option>
+                <option>Câmara fria e alimentos</option>
+                <option>Outro</option>
+              </select>
+            </label>
+            <label>Pontos a monitorar
+              <select name="pontos">
+                <option>1 a 2 pontos</option>
+                <option>3 a 5 pontos</option>
+                <option>Mais de 5 pontos</option>
+                <option>Ainda não sei</option>
+              </select>
+            </label>
+          </div>
+          <label>O que mais preocupa? <span class="opt">(opcional)</span><textarea name="cenario" rows="3" maxlength="2000" placeholder="Ex.: a geladeira no fim de semana"></textarea></label>
           <div data-turnstile hidden></div>
           <p class="form-note" role="status" aria-live="polite" data-verification-status hidden></p>
-          <button class="button button-block" type="submit">Enviar pedido</button>
+          <button class="btn btn-primary btn-block" type="submit">Enviar pedido</button>
           <p class="form-note" role="status" aria-live="polite" data-form-status hidden></p>
-          <p class="form-note" id="form-note">Usamos seus dados para responder ao pedido. Consulte a <a href="./privacidade.html">política de privacidade</a>.</p>
-          <p class="form-note">Prefere e-mail? <a data-email-alternative href="mailto:contato@officina404.com.br">Escreva para contato@officina404.com.br</a>.</p>
-          <noscript><p class="form-note">Para usar o formulário, habilite JavaScript. Você também pode escrever para <a href="mailto:contato@officina404.com.br">contato@officina404.com.br</a>.</p></noscript>
+          <p class="form-note" id="form-note">Usamos seus dados apenas para responder ao pedido. Veja a <a href="privacidade.html">política de privacidade</a>. Prefere e-mail? <a data-email-alternative href="mailto:contato@officina404.com.br">contato@officina404.com.br</a></p>
+          <noscript><p class="form-note">Para usar o formulário, habilite JavaScript ou escreva para contato@officina404.com.br.</p></noscript>
         </form>
-      </div>
-    </section>
-    <section class="section" id="duvidas">
-      <div class="shell faq"><div class="section-head"><p class="eyebrow">Dúvidas frequentes</p><h2>Antes de começar o piloto.</h2></div>
-        <details><summary>Preciso comprar sensores novos?</summary><p>Não necessariamente. Avaliamos os dispositivos e dados que você já tem. Se precisar de coleta em campo, definimos sensores e conectividade no escopo do piloto.</p></details>
-        <details><summary>Onde recebo os alertas?</summary><p>Hoje, os alertas e as notificações ficam no portal do Fluxo. E-mail está pendente; WhatsApp e Telegram ainda não estão disponíveis.</p></details>
-        <details><summary>Funciona sem internet?</summary><p>O envio de leituras depende de conectividade. Avaliamos a conexão de cada instalação durante a definição do piloto.</p></details>
-        <details><summary>Quanto custa e quanto tempo leva?</summary><p>O investimento e o prazo dependem do ponto de medição, dos sensores e da integração necessária. Escopo, investimento e responsabilidades são definidos na proposta do piloto.</p></details>
-        <details><summary>O R1 já está pronto para instalação?</summary><p>O R1 é um protótipo de bancada com foco inicial em temperatura. Gabinete, alimentação e certificações ainda serão definidos. A implantação do piloto considera a solução adequada ao seu cenário.</p></details>
-        <details><summary>As telas mostram resultados de clientes?</summary><p>As capturas são da interface real do Fluxo, com dados demonstrativos. A foto do R1 mostra o protótipo de bancada; o gabinete é uma ilustração conceitual. Veja o <a href="https://officina404.com.br/projetos/fluxo.html">diário técnico</a> para acompanhar o desenvolvimento.</p></details>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="shell footer-inner">
-      <div>
-        <a class="brand" href="#inicio">
-          <svg viewBox="0 0 32 32" aria-hidden="true" fill="none"><rect width="32" height="32" rx="8" fill="currentColor"/><path d="M5 16h5l4-10 6 20 4-10h3" stroke="#63d6b0" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span class="brand-name">Fluxo</span>
-        </a>
-        <p>Monitoramento IoT com histórico e alertas, desenvolvido pela Officina404.</p>
+      <a class="brand" href="#inicio"><img src="assets/icon-fluxo-sm.webp" width="40" height="40" alt="" /><span><span class="brand-name">Fluxo<b>.</b></span><span class="brand-by">uma solução Officina 404</span></span></a>
+      <ul class="footer-links">
+        <li>Lages e Serra Catarinense, SC</li>
+        <li><a data-wa href="https://wa.me/5549988079237" target="_blank" rel="noopener">WhatsApp (49) 98807-9237</a></li>
+        <li><a href="mailto:contato@officina404.com.br">contato@officina404.com.br</a></li>
+        <li><a href="privacidade.html">Privacidade</a></li>
+        <li><a href="https://officina404.com.br/projetos/fluxo.html">Diário técnico</a></li>
+      </ul>
+      <div class="footer-bottom">
+        <span>© 2026 Officina 404</span>
       </div>
-      <nav class="footer-links" aria-label="Rodapé">
-        <a href="./privacidade.html">Privacidade</a>
-        <a href="https://officina404.com.br">Officina404</a>
-        <a href="https://officina404.com.br/projetos/fluxo.html">Diário técnico</a>
-        <a href="mailto:contato@officina404.com.br">contato@officina404.com.br</a>
-      </nav>
-      <p class="footer-legal">&copy; 2026 Officina 404 - Junior Godoi. Todos os direitos reservados.</p>
     </div>
   </footer>
+
+  <a class="wa-float" data-wa href="https://wa.me/5549988079237" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+    <span>WhatsApp</span>
+  </a>
+
+  <dialog class="zoom" id="zoom" aria-label="Captura ampliada">
+    <button class="zoom-close" type="button" data-zoom-close aria-label="Fechar">×</button>
+    <img id="zoomImg" src="" alt="" />
+  </dialog>
+
+  <script defer src="site-config.js"></script>
+  <script defer src="script.js"></script>
 </body>
 </html>
-
-
-
