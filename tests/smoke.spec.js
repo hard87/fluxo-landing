@@ -300,3 +300,14 @@ test('Do Not Track impede carregamento e eventos de analytics', async ({ page })
   await page.goto('/'); await page.locator('a[data-cta="hero-diagnostico"]').click();
   expect(analyticsRequests).toBe(0); expect(await page.evaluate(() => window.events)).toEqual([]);
 });
+
+test('sem rolagem horizontal entre 320 e 1600 px', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'desktop', 'varredura feita uma vez');
+  await page.goto('/');
+  for (let width = 320; width <= 1600; width += 16) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.waitForTimeout(60);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth), `${width} px`).toBeLessThanOrEqual(0);
+    expect(await page.evaluate(() => [...document.querySelectorAll('.seg')].every(s => s.getBoundingClientRect().right <= document.documentElement.clientWidth + 1)), `cartões do hub em ${width} px`).toBe(true);
+  }
+});
